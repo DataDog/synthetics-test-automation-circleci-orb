@@ -8,6 +8,6 @@ usage:
     use-my-orb:
       jobs:
         - integration-tests:
-          steps:
-            - synthetics-ci-orb/run-tests:
-              public_ids: 'thi-ng-one,thi-ng-two'
+            steps:
+              - synthetics-ci-orb/run-tests:
+                  public_ids: 'thi-ng-one,thi-ng-two'
