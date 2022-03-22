@@ -8,7 +8,7 @@ usage:
 
   jobs:
     integration-tests:
-      docker: 
+      docker:
         - image: your-image
       steps:
         - checkout
@@ -20,7 +20,7 @@ usage:
             files: integration-tests/*.synthetics.json
             test_search_query: 'tag:e2e-tests'
             tunnel: true
-  
+
   workflows:
     test-server:
       jobs:
