@@ -6,8 +6,7 @@ RunTests() {
         PARAM_SITE=${DD_SITE}
     fi
 
-    echo "https://github.com/DataDog/datadog-ci/releases/${PARAM_VERSION}/download/datadog-ci_linux-x64"
-    curl -L --fail "https://github.com/DataDog/datadog-ci/releases/${PARAM_VERSION}/download/datadog-ci_linux-x64" --output "./datadog-ci"
+    curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/${PARAM_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
     
     chmod +x ./datadog-ci
 

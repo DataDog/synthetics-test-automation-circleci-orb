@@ -41,7 +41,7 @@ setup() {
     export PARAM_SUBDOMAIN=""
     export PARAM_TEST_SEARCH_QUERY=""
     export PARAM_TUNNEL="0"
-    export PARAM_VERSION="latest"
+    export PARAM_VERSION="v1.1.1"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
