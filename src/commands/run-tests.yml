@@ -52,7 +52,7 @@ parameters:
   version:
     type: string
     description: Version of datadog-ci
-    default: "latest"
+    default: "v1.1.1"
 steps:
   - run:
       environment:
