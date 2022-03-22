@@ -5,8 +5,6 @@ setup() {
 }
 
 @test 'Use custom parameters' {
-    # Mock environment variables or functions by exporting them (after the script has been sourced)
-    export PARAM_TO="World"
     export PARAM_API_KEY="DD_API_KEY"
     export PARAM_APP_KEY="DD_APP_KEY"
     export PARAM_CONFIG_PATH="./some/other/path.json"
@@ -20,10 +18,35 @@ setup() {
     export PARAM_TUNNEL="1"
     export PARAM_VERSION="latest"
     export DATADOG_CI_COMMAND="echo"
-    # Capture the output of our "Greet" function
+
     result=$(RunTests)
     
-    if ! echo $result | grep -q "synthetics run-tests --config ./some/other/path.json --files test1.json,test2.json --public-id jak-not-now --search apm --failOnTimeout --tunnel"
+    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json,test2.json --public-id jak-not-now --search apm"
+    then
+      echo $result
+      exit 1
+    fi
+}
+
+@test 'Use default parameters' {
+    export PARAM_API_KEY="DD_API_KEY"
+    export PARAM_APP_KEY="DD_APP_KEY"
+    export PARAM_CONFIG_PATH=""
+    export PARAM_FAIL_ON_CRITICAL_ERRORS="0"
+    export PARAM_FAIL_ON_TIMEOUT="1"
+    export PARAM_FILES=""
+    export PARAM_LOCATIONS=""
+    export PARAM_PUBLIC_IDS=""
+    export PARAM_SITE=""
+    export PARAM_SUBDOMAIN=""
+    export PARAM_TEST_SEARCH_QUERY=""
+    export PARAM_TUNNEL="0"
+    export PARAM_VERSION="latest"
+    export DATADOG_CI_COMMAND="echo"
+
+    result=$(RunTests)
+
+    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout"
     then
       echo $result
       exit 1

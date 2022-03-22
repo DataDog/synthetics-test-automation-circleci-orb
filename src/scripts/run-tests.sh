@@ -15,18 +15,32 @@ RunTests() {
         DATADOG_CI_COMMAND="./datadog-ci"
     fi
 
-    BOOLEAN_FLAGS=""
+    FLAGS=""
     if [[ $PARAM_FAIL_ON_CRITICAL_ERRORS == "1" ]]; then
-        BOOLEAN_FLAGS+=" --failOnCriticalErrors"
+        FLAGS+=" --failOnCriticalErrors"
     fi
     if [[ $PARAM_FAIL_ON_TIMEOUT == "1" ]]; then
-        BOOLEAN_FLAGS+=" --failOnTimeout"
+        FLAGS+=" --failOnTimeout"
+    else
+        FLAGS+=" --no-failOnTimeout"
     fi
     if [[ $PARAM_TUNNEL == "1" ]]; then
-        BOOLEAN_FLAGS+=" --tunnel"
+        FLAGS+=" --tunnel"
+    fi
+    if [[ -n $PARAM_CONFIG_PATH ]]; then
+        FLAGS+=" --config ${PARAM_CONFIG_PATH}"
+    fi
+    if [[ -n $PARAM_FILES ]]; then
+        FLAGS+=" --files ${PARAM_FILES}"
+    fi
+    if [[ -n $PARAM_PUBLIC_IDS ]]; then
+        FLAGS+=" --public-id ${PARAM_PUBLIC_IDS}"
+    fi
+    if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
+        FLAGS+=" --search ${PARAM_TEST_SEARCH_QUERY}"
     fi
 
-    read -ra flag_args < <(echo "${BOOLEAN_FLAGS}")
+    read -ra flag_args < <(echo "${FLAGS}")
 
     set +e
 
@@ -36,10 +50,6 @@ RunTests() {
     DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}" \
     DATADOG_SITE="${PARAM_SITE}" \
         $DATADOG_CI_COMMAND synthetics run-tests \
-        --config "${PARAM_CONFIG_PATH}" \
-        --files "${PARAM_FILES}" \
-        --public-id "${PARAM_PUBLIC_IDS}" \
-        --search "${PARAM_TEST_SEARCH_QUERY}" \
         "${flag_args[@]}"
 }
 
