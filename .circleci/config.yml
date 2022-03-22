@@ -29,7 +29,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - synthetics-ci-orb-private/run-tests
+      - synthetics-ci-orb-private/run-tests:
+          fail_on_critical_errors: true
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
