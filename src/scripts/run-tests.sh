@@ -38,6 +38,9 @@ RunTests() {
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
         FLAGS+=" --search ${PARAM_TEST_SEARCH_QUERY}"
     fi
+    if [[ -n $PARAM_VARIABLES ]]; then
+        FLAGS+=" --variables ${PARAM_VARIABLES}"
+    fi
 
     read -ra flag_args < <(echo "${FLAGS}")
 
