@@ -43,6 +43,7 @@ RunTests() {
 
     set +e
 
+    NODE_ENV=dev DEBUG=* \
     DATADOG_API_KEY="${PARAM_API_KEY}" \
     DATADOG_APP_KEY="${PARAM_APP_KEY}" \
     DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
