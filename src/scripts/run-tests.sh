@@ -41,13 +41,16 @@ RunTests() {
 
     read -ra flag_args < <(echo "${FLAGS}")
 
+    if [[ -n $PARAM_LOCATIONS ]]; then
+        export DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}"
+    fi
+
     set +e
 
     NODE_ENV="dev" DEBUG="*" \
     DATADOG_API_KEY="${PARAM_API_KEY}" \
     DATADOG_APP_KEY="${PARAM_APP_KEY}" \
     DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
-    DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}" \
     DATADOG_SITE="${PARAM_SITE}" \
         $DATADOG_CI_COMMAND synthetics run-tests \
         "${flag_args[@]}"
