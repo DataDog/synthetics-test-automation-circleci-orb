@@ -27,19 +27,19 @@ RunTests() {
         FLAGS+=" --tunnel"
     fi
     if [[ -n $PARAM_CONFIG_PATH ]]; then
-        FLAGS+=" --config ${PARAM_CONFIG_PATH}"
+        FLAGS+=" --config \"${PARAM_CONFIG_PATH}\""
     fi
     if [[ -n $PARAM_FILES ]]; then
-        FLAGS+=" --files ${PARAM_FILES}"
+        FLAGS+=" --files \"${PARAM_FILES}\""
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
-        FLAGS+=" --public-id ${PARAM_PUBLIC_IDS}"
+        FLAGS+=" --public-id \"${PARAM_PUBLIC_IDS}\""
     fi
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
-        FLAGS+=" --search ${PARAM_TEST_SEARCH_QUERY}"
+        FLAGS+=" --search \"${PARAM_TEST_SEARCH_QUERY}\""
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
-        FLAGS+=" --variables ${PARAM_VARIABLES}"
+        FLAGS+=" --variables \"${PARAM_VARIABLES}\""
     fi
 
     read -ra flag_args < <(echo "${FLAGS}")

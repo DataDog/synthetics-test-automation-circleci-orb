@@ -9,7 +9,7 @@ setup() {
     export PARAM_APP_KEY="DD_APP_KEY"
     export PARAM_CONFIG_PATH="./some/other/path.json"
     export PARAM_FAIL_ON_TIMEOUT="1"
-    export PARAM_FILES="test1.json,test2.json"
+    export PARAM_FILES="test1.json, test2.json"
     export PARAM_LOCATIONS="aws:eu-1"
     export PARAM_PUBLIC_IDS="jak-not-now"
     export PARAM_SITE="datadoghq.eu"
@@ -21,7 +21,7 @@ setup() {
 
     result=$(RunTests)
     
-    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json,test2.json --public-id jak-not-now --search apm"
+    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config \"./some/other/path.json\" --files \"test1.json, test2.json\" --public-id \"jak-not-now\" --search \"apm\""
     then
       echo $result
       exit 1
