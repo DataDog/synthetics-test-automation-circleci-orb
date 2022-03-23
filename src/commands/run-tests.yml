@@ -1,17 +1,17 @@
 description: >
-  This command runs Datadog Synthetics tests, passing if all tests succeed, failing otherwise
+  This command runs Datadog Synthetics tests, passing if all tests succeed, failing otherwise.
 parameters:
   api_key:
     type: env_var_name
-    description: The name of the environment variable containing the API key
+    description: The name of the environment variable containing the API key.
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the APP key
+    description: The name of the environment variable containing the APP key.
     default: DATADOG_APP_KEY
   config_path:
     type: string
-    description: The global JSON configuration is used when launching tests
+    description: The global JSON configuration is used when launching tests.
     default: ""
   fail_on_critical_errors:
     type: boolean
@@ -23,11 +23,11 @@ parameters:
     default: true
   files:
     type: string
-    description: Glob pattern to detect Synthetic tests config files
+    description: Glob pattern to detect Synthetic tests config files.
     default: ""
   locations:
     type: string
-    description: String of locations separated by semicolons to override the locations where your tests run
+    description: String of locations separated by semicolons to override the locations where your tests run.
     default: ""
   public_ids:
     type: string
@@ -39,15 +39,15 @@ parameters:
     default: "datadoghq.com"
   subdomain:
     type: string
-    description: The name of the custom subdomain set to access your Datadog application
+    description: The name of the custom subdomain set to access your Datadog application.
     default: "app"
   test_search_query:
     type: string
-    description: Trigger tests corresponding to a search query
+    description: Trigger tests corresponding to a search query.
     default: ""
   tunnel:
     type: boolean
-    description: Use the testing tunnel to trigger tests
+    description: Use the testing tunnel to trigger tests.
     default: false
   variables:
     type: string
@@ -55,7 +55,7 @@ parameters:
     default: ""
   version:
     type: string
-    description: Version of datadog-ci
+    description: Version of datadog-ci.
     default: "v1.1.1"
 steps:
   - run:
