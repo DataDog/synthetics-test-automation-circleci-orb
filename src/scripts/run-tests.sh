@@ -31,14 +31,14 @@ RunTests() {
         args+=(--config "${PARAM_CONFIG_PATH}")
     fi
     if [[ -n $PARAM_FILES ]]; then
-        files=$(echo $PARAM_FILES | tr "," "\n")
+        files=$(echo "${PARAM_FILES}" | tr "," "\n")
         for file in $files
         do
             args+=(--files "${file}")
         done
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
-        public_ids=$(echo $PARAM_PUBLIC_IDS | tr "," "\n")
+        public_ids=$(echo "${PARAM_PUBLIC_IDS}" | tr "," "\n")
         for public_id in $public_ids
         do
             args+=(--public-id "${public_id}")
@@ -48,10 +48,10 @@ RunTests() {
         args+=(--search "${PARAM_TEST_SEARCH_QUERY}")
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
-        variables=$(echo $PARAM_VARIABLES | tr "," "\n")
+        variables=$(echo "${PARAM_VARIABLES}" | tr "," "\n")
         for variable in $variables
         do
-            args+=(--variables "${PARAM_VARIABLES}")
+            args+=(--variables "${variable}")
         done
     fi
 
