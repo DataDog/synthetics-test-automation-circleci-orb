@@ -10,7 +10,7 @@ setup() {
     export PARAM_CONFIG_PATH="./some/other/path.json"
     export PARAM_FAIL_ON_TIMEOUT="1"
     export PARAM_FILES="test1.json, test2.json"
-    export PARAM_LOCATIONS="aws:eu-1"
+    export PARAM_LOCATIONS="aws:eu-west-1"
     export PARAM_PUBLIC_IDS="jak-not-now"
     export PARAM_SITE="datadoghq.eu"
     export PARAM_SUBDOMAIN="app1"
