@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   # Replace this with your own!
-  synthetics-ci-orb-private: datadog/synthetics-ci-orb-private@<<pipeline.parameters.dev-orb-version>>
+  synthetics-ci-orb: datadog/synthetics-ci-orb@<<pipeline.parameters.dev-orb-version>>
   orb-tools: circleci/orb-tools@10.0
   bats: circleci/bats@1.0
   shellcheck: circleci/shellcheck@2.0
@@ -29,14 +29,14 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - synthetics-ci-orb-private/run-tests:
+      - synthetics-ci-orb/run-tests:
           fail_on_critical_errors: true
   integration-test-with-spaces:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      - synthetics-ci-orb-private/run-tests:
+      - synthetics-ci-orb/run-tests:
           fail_on_critical_errors: true
           files: "ci/file\ with\ space.json"
   integration-test-with-multiple-public-ids:
@@ -44,7 +44,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - synthetics-ci-orb-private/run-tests:
+      - synthetics-ci-orb/run-tests:
           fail_on_critical_errors: true
           public_ids: 6jq-89z-5ur, s26-j8m-bu7
 
@@ -64,7 +64,7 @@ workflows:
           path: ./src/tests
       # Publish development version(s) of the orb.
       - orb-tools/publish-dev:
-          orb-name: datadog/synthetics-ci-orb-private
+          orb-name: datadog/synthetics-ci-orb
           context: orb-publishing # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
           requires:
             - orb-tools/lint
@@ -97,7 +97,7 @@ workflows:
       # be skipped.
       # e.g. [semver:patch] will cause a patch version to be published.
       - orb-tools/dev-promote-prod-from-commit-subject:
-          orb-name: datadog/synthetics-ci-orb-private
+          orb-name: datadog/synthetics-ci-orb
           context: orb-publishing
           add-pr-comment: false
           fail-if-semver-not-indicated: true
