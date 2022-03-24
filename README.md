@@ -6,7 +6,7 @@
 
 The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3].
 
-The image running it must have cURL installed.
+The image running it must have a linux x64 base image with cURL installed.
 
 ## Usage
 
