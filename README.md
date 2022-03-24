@@ -2,7 +2,7 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-ci-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/DataDog/synthetics-ci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb-private.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb-private) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-CircleCI command orb that installs [datadog-ci](https://github.com/DataDog/datadog-ci/) and uses the `datadog-ci synthetics run-tests` [command](https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics) to execute [DataDog Synthetics tests](https://docs.datadoghq.com/synthetics/cicd_integrations). For the command to work, the image running it must have `curl` installed.
+CircleCI command orb that installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3]. For the command to work, the image running it must have `curl` installed.
 
 ## Usage
 
@@ -51,7 +51,7 @@ jobs:
 
 ## Running unit tests locally
 
-The unit tests defined in the `src/tests` folder can be ran by installing the [bats](https://bats-core.readthedocs.io/en/stable/installation.html) CLI and running:
+The unit tests defined in the `src/tests` folder can be ran by installing the [bats][4] CLI and running:
 
 ```
 bats src/tests/
@@ -59,12 +59,12 @@ bats src/tests/
 
 ## Resources
 
-- [CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.
-- [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.
+- [CircleCI Orb Registry Page][5] - The official registry page of this orb for all versions, executors, commands, and jobs described.
+- [CircleCI Orb Docs][6] - Docs for using and creating CircleCI Orbs.
 
 ### How to Contribute
 
-We welcome [issues](https://github.com/DataDog/synthetics-ci-orb/issues) to and [pull requests](https://github.com/DataDog/synthetics-ci-orb/pulls) against this repository!
+We welcome [issues][7] to and [pull requests][8] against this repository!
 
 ### How to Publish
 * Create and push a branch with your new features.
@@ -84,5 +84,14 @@ Example: `[semver:major]`
 * On merge, after manual approval, the orb will automatically be published to the Orb Registry.
 
 
-For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
+For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss][9].
 
+[1]: https://github.com/DataDog/datadog-ci/
+[2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics
+[3]: https://docs.datadoghq.com/synthetics/cicd_integrations
+[4]: https://bats-core.readthedocs.io/en/stable/installation.html
+[5]: https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb
+[6]: https://circleci.com/docs/2.0/orb-intro/#section=configuration
+[7]: https://github.com/DataDog/synthetics-ci-orb/issues
+[8]: https://github.com/DataDog/synthetics-ci-orb/pulls
+[9]: https://discuss.circleci.com/c/orbs
