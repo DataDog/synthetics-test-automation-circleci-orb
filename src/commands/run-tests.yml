@@ -1,0 +1,78 @@
+description: >
+  This command runs Datadog Synthetics tests. If all tests succeed, it passes, and fails otherwise.
+parameters:
+  api_key:
+    type: env_var_name
+    description: The name of the environment variable containing the API key.
+    default: DATADOG_API_KEY
+  app_key:
+    type: env_var_name
+    description: The name of the environment variable containing the app key.
+    default: DATADOG_APP_KEY
+  config_path:
+    type: string
+    description: The global JSON configuration used when launching tests.
+    default: ""
+  fail_on_critical_errors:
+    type: boolean
+    description: Fail if tests were not triggered or results could not be fetched.
+    default: false
+  fail_on_timeout:
+    type: boolean
+    description: Force the CI to fail (or pass) if one of the results exceeds its test timeout.
+    default: true
+  files:
+    type: string
+    description: Glob pattern to detect Synthetic tests config files.
+    default: ""
+  locations:
+    type: string
+    description: String of locations separated by semicolons to override the locations where your tests run.
+    default: ""
+  public_ids:
+    type: string
+    description: String of public IDs separated by commas for Synthetic tests you want to trigger.
+    default: ""
+  site:
+    type: string
+    description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+    default: "datadoghq.com"
+  subdomain:
+    type: string
+    description: The name of the custom subdomain set to access your Datadog application.
+    default: "app"
+  test_search_query:
+    type: string
+    description: Trigger tests corresponding to a search query.
+    default: ""
+  tunnel:
+    type: boolean
+    description: Use the testing tunnel to trigger tests.
+    default: false
+  variables:
+    type: string
+    description: Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
+    default: ""
+  version:
+    type: string
+    description: Version of datadog-ci.
+    default: "v1.1.1"
+steps:
+  - run:
+      environment:
+        PARAM_API_KEY: <<parameters.api_key>>
+        PARAM_APP_KEY: <<parameters.app_key>>
+        PARAM_CONFIG_PATH: <<parameters.config_path>>
+        PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
+        PARAM_FAIL_ON_TIMEOUT: <<parameters.fail_on_timeout>>
+        PARAM_FILES: <<parameters.files>>
+        PARAM_LOCATIONS: <<parameters.locations>>
+        PARAM_PUBLIC_IDS: <<parameters.public_ids>>
+        PARAM_SITE: <<parameters.site>>
+        PARAM_SUBDOMAIN: <<parameters.subdomain>>
+        PARAM_TEST_SEARCH_QUERY: <<parameters.test_search_query>>
+        PARAM_TUNNEL: <<parameters.tunnel>>
+        PARAM_VARIABLES: <<parameters.variables>>
+        PARAM_VERSION: <<parameters.version>>
+      name: Run Datadog Synthetics tests
+      command: <<include(scripts/run-tests.sh)>>

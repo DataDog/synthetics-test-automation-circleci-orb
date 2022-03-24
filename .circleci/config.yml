@@ -24,15 +24,29 @@ parameters:
 
 jobs:
   # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
-  integration-test-1:
+  integration-test-simple:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      # "greet" is a sample command packaged with this orb config.
-      # This sample integration test will run as long as the greet command exists. Once you remove the greet command you should remove this line.
-      # Push new changes first, before adding new tests to your config.
-      - synthetics-ci-orb-private/greet
+      - synthetics-ci-orb-private/run-tests:
+          fail_on_critical_errors: true
+  integration-test-with-spaces:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - synthetics-ci-orb-private/run-tests:
+          fail_on_critical_errors: true
+          files: "ci/file\ with\ space.json"
+  integration-test-with-multiple-public-ids:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - synthetics-ci-orb-private/run-tests:
+          fail_on_critical_errors: true
+          public_ids: 6jq-89z-5ur, s26-j8m-bu7
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
@@ -73,7 +87,9 @@ workflows:
     when: << pipeline.parameters.run-integration-tests >>
     jobs:
       # Run any integration tests defined within the `jobs` key.
-      - integration-test-1
+      - integration-test-simple
+      - integration-test-with-spaces
+      - integration-test-with-multiple-public-ids
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
       # as that will determine whether a patch, minor or major
@@ -87,9 +103,10 @@ workflows:
           fail-if-semver-not-indicated: true
           publish-version-tag: false
           requires:
-            - integration-test-1
+            - integration-test-simple
+            - integration-test-with-spaces
+            - integration-test-with-multiple-public-ids
           filters:
             branches:
               only:
-                - master
                 - main
