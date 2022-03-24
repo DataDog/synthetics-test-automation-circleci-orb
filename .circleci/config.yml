@@ -88,7 +88,7 @@ workflows:
     jobs:
       # Run any integration tests defined within the `jobs` key.
       - integration-test-simple
-      - integration-test-with-flags
+      - integration-test-with-spaces
       - integration-test-with-multiple-public-ids
       # Publish a semver version of the orb. relies on
       # the commit subject containing the text "[semver:patch|minor|major|skip]"
