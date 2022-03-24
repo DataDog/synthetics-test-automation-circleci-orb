@@ -1,5 +1,5 @@
 description: >
-  This command runs Datadog Synthetics tests. If all tests succeed, it passes, and fails overwise.
+  This command runs Datadog Synthetics tests. If all tests succeed, it passes, and fails otherwise.
 parameters:
   api_key:
     type: env_var_name
