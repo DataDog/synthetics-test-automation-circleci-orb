@@ -4,9 +4,9 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-ci-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/DataDog/synthetics-ci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3].
+The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [Datadog Synthetics tests][3].
 
-The image running it must have a linux x64 base image with cURL installed.
+The image running it must have a Linux x64 base image with cURL installed.
 
 ## Usage
 
@@ -80,37 +80,38 @@ To use unit tests defined in the `src/tests` folder, install the [bats][4] CLI a
 bats src/tests/
 ```
 
+## Development
+
+### Contributions
+
+Submit [issues][7] and [pull requests][8] in this repository to contribute!
+
+### Publish your changes
+
+1. Create and push a branch with your new features.
+2. When you are ready to publish a new production version, create a pull request from the **feature branch** to `main`.
+3. The title of the pull request must contain a special semver tag, `[semver:<segment>]`, where `<segment>` is replaced by one of the following values.
+
+   | Increment | Description|
+   | ----------| -----------|
+   | major     | Issue a 1.0.0 incremented release. |
+   | minor     | Issue a x.1.0 incremented release. |
+   | patch     | Issue a x.x.1 incremented release. |
+   | skip      | Do not issue a release. |
+
+   For example, you can use `[semver:major]` to name a pull request.
+
+4. Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
+5. On merge, after manual approval, the orb automatically publishes to the Orb Registry.
+
+For more information, see the Orb Category of [CircleCI Discuss][9].
+
 ## Further Reading
 
 Additional helpful documentation, links, and articles:
 
 - [CircleCI Orb Registry Page][5]
 - [CircleCI Orb Docs][6]
-
-### Contributing
-
-Submit [issues][7] and [pull requests][8] in this repository to contribute!
-
-### Publishing
-
-* Create and push a branch with your new features.
-* When you are ready to publish a new production version, create a pull request from the **feature branch** to `main`.
-* The title of the pull request must contain a special semver tag, `[semver:<segment>]`, where `<segment>` is replaced by one of the following values.
-
-| Increment | Description|
-| ----------| -----------|
-| major     | Issue a 1.0.0 incremented release|
-| minor     | Issue a x.1.0 incremented release|
-| patch     | Issue a x.x.1 incremented release|
-| skip      | Do not issue a release|
-
-Example: `[semver:major]`
-
-* Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
-* On merge, after manual approval, the orb will automatically be published to the Orb Registry.
-
-
-For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss][9].
 
 [1]: https://github.com/DataDog/datadog-ci/
 [2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics
