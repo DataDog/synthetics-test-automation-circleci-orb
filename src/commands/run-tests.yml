@@ -11,7 +11,7 @@ parameters:
     default: DATADOG_APP_KEY
   config_path:
     type: string
-    description: The global JSON configuration is used when launching tests.
+    description: The global JSON configuration used when launching tests.
     default: ""
   fail_on_critical_errors:
     type: boolean
@@ -19,7 +19,7 @@ parameters:
     default: false
   fail_on_timeout:
     type: boolean
-    description: Force the CI fail (or pass) if one of the results exceed its test timeout.
+    description: Force the CI to fail (or pass) if one of the results exceeds its test timeout.
     default: true
   files:
     type: string
@@ -31,7 +31,7 @@ parameters:
     default: ""
   public_ids:
     type: string
-    description: String of public IDs separated by commas for Synthetic tests you want to trigger. If no value is provided, the command looks for files named with `synthetics.json`.
+    description: String of public IDs separated by commas for Synthetic tests you want to trigger.
     default: ""
   site:
     type: string

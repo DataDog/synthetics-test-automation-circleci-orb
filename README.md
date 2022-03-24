@@ -53,6 +53,25 @@ jobs:
           tunnel: true
 ```
 
+## Inputs
+
+Name | Type | Default | Description
+---|---|---|---
+`api_key` | env var name | `DATADOG_API_KEY` | The name of the environment variable containing the API key.
+`api_key` | env var name | `DATADOG_APP_KEY` | The name of the environment variable containing the app key.
+`config_path` | string | `datadog-ci.json` | The global JSON configuration used when launching tests.
+`fail_on_critical_errors` | boolean | `false` | Fail if tests were not triggered or results could not be fetched.
+`fail_on_timeout` | boolean | `true` | Force the CI to fail (or pass) if one of the results exceeds its test timeout.
+`files` | string | `{,!(node_modules)/**/}*.synthetics.json` | Glob pattern to detect Synthetic tests config files.
+`locations` | string | _values in test config files_ | String of locations separated by semicolons to override the locations where your tests run.
+`public_ids` | string | _values in test config files_ | String of public IDs separated by commas for Synthetic tests you want to trigger.
+`site` | string | `datadoghq.com` | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+`subdomain` | string | `app` | The name of the custom subdomain set to access your Datadog application.
+`test_search_query` | string | _none_ | Trigger tests corresponding to a search query.
+`tunnel` | boolean | `false` | Use the testing tunnel to trigger tests.
+`variables` | string | _none_ | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
+`version` | string | `v1.1.1` | The version of datadog-ci to use
+
 ## Run unit tests locally
 
 To use unit tests defined in the `src/tests` folder, install the [bats][4] CLI and run the following:
