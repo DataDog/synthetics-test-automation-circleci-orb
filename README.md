@@ -1,8 +1,12 @@
 # synthetics-ci-orb
 
+## Overview
+
 [![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-ci-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/DataDog/synthetics-ci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb-private.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb-private) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-CircleCI command orb that installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3]. For the command to work, the image running it must have `curl` installed.
+The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3].
+
+The image running it must have cURL installed.
 
 ## Usage
 
@@ -51,7 +55,7 @@ jobs:
 
 ## Run unit tests locally
 
-The unit tests defined in the `src/tests` folder can be ran by installing the [bats][4] CLI and running:
+To use unit tests defined in the `src/tests` folder, install the [bats][4] CLI and run the following:
 
 ```
 bats src/tests/
@@ -61,12 +65,12 @@ bats src/tests/
 
 Additional helpful documentation, links, and articles:
 
-- [CircleCI Orb Registry Page][5] - The official registry page of this orb for all versions, executors, commands, and jobs described.
-- [CircleCI Orb Docs][6] - Docs for using and creating CircleCI Orbs.
+- [CircleCI Orb Registry Page][5]
+- [CircleCI Orb Docs][6]
 
 ### Contributing
 
-We welcome [issues][7] to and [pull requests][8] against this repository!
+Submit [issues][7] and [pull requests][8] in this repository to contribute!
 
 ### Publishing
 
