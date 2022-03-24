@@ -1,14 +1,14 @@
 version: 2.1
 
 description: >
-  Sample orb description
+  The CircleCI command orb installs datadog-ci and uses the `datadog-ci synthetics run-tests` command to execute DataDog Synthetics tests.
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
 
 # This information will be displayed in the orb registry and is not mandatory.
 display:
-  home_url: "https://www.website.com/docs"
-  source_url: "https://www.github.com/EXAMPLE_ORG/EXAMPLE_PROJECT"
+  home_url: "https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics"
+  source_url: "https://www.github.com/DataDog/synthetics-ci-orb"
 
 # If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.
 # orbs:
