@@ -1,5 +1,5 @@
 description: >
-  This command runs Datadog Synthetics tests, passing if all tests succeed, failing otherwise.
+  This command runs Datadog Synthetics tests. If all tests succeed, it passes, and fails overwise.
 parameters:
   api_key:
     type: env_var_name
@@ -7,7 +7,7 @@ parameters:
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the APP key.
+    description: The name of the environment variable containing the app key.
     default: DATADOG_APP_KEY
   config_path:
     type: string
@@ -31,11 +31,11 @@ parameters:
     default: ""
   public_ids:
     type: string
-    description: String of public IDs separated by commas for Synthetic tests you want to trigger. If no value is provided, the command looks for files named with synthetics.json.
+    description: String of public IDs separated by commas for Synthetic tests you want to trigger. If no value is provided, the command looks for files named with `synthetics.json`.
     default: ""
   site:
     type: string
-    description: The Datadog site to send data to. If the environment variable DD_SITE is set that will take preference.
+    description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
     default: "datadoghq.com"
   subdomain:
     type: string
@@ -51,7 +51,7 @@ parameters:
     default: false
   variables:
     type: string
-    description: Key-value pairs for injecting variables into tests. Must be formatted using KEY=VALUE.
+    description: Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
     default: ""
   version:
     type: string

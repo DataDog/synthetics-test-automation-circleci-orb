@@ -1,5 +1,5 @@
 description: >
-  An example pipeline that triggers synthetics tests
+  An example pipeline that triggers Synthetics tests.
 usage:
   version: 2.1
   orbs:

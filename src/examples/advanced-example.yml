@@ -1,5 +1,5 @@
 description: >
-  An advanced example pipeline that starts a local server and triggers synthetics tests using the datadog-ci tunnel
+  An advanced example pipeline that starts a local server and triggers Synthetics tests using the `datadog-ci` tunnel.
 usage:
   version: 2.1
 

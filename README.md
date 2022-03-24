@@ -49,7 +49,7 @@ jobs:
           tunnel: true
 ```
 
-## Running unit tests locally
+## Run unit tests locally
 
 The unit tests defined in the `src/tests` folder can be ran by installing the [bats][4] CLI and running:
 
@@ -57,19 +57,22 @@ The unit tests defined in the `src/tests` folder can be ran by installing the [b
 bats src/tests/
 ```
 
-## Resources
+## Further Reading
+
+Additional helpful documentation, links, and articles:
 
 - [CircleCI Orb Registry Page][5] - The official registry page of this orb for all versions, executors, commands, and jobs described.
 - [CircleCI Orb Docs][6] - Docs for using and creating CircleCI Orbs.
 
-### How to Contribute
+### Contributing
 
 We welcome [issues][7] to and [pull requests][8] against this repository!
 
-### How to Publish
+### Publishing
+
 * Create and push a branch with your new features.
-* When ready to publish a new production version, create a Pull Request from _feature branch_ to `main`.
-* The title of the pull request must contain a special semver tag: `[semver:<segment>]` where `<segment>` is replaced by one of the following values.
+* When you are ready to publish a new production version, create a pull request from the **feature branch** to `main`.
+* The title of the pull request must contain a special semver tag, `[semver:<segment>]`, where `<segment>` is replaced by one of the following values.
 
 | Increment | Description|
 | ----------| -----------|
