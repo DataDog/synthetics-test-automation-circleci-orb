@@ -15,35 +15,33 @@ RunTests() {
         DATADOG_CI_COMMAND="./datadog-ci"
     fi
 
-    FLAGS=""
+    args=()
     if [[ $PARAM_FAIL_ON_CRITICAL_ERRORS == "1" ]]; then
-        FLAGS+=" --failOnCriticalErrors"
+        args+=(--failOnCriticalErrors)
     fi
     if [[ $PARAM_FAIL_ON_TIMEOUT == "1" ]]; then
-        FLAGS+=" --failOnTimeout"
+        args+=(--failOnTimeout)
     else
-        FLAGS+=" --no-failOnTimeout"
+        args+=(--no-failOnTimeout)
     fi
     if [[ $PARAM_TUNNEL == "1" ]]; then
-        FLAGS+=" --tunnel"
+        args+=(--tunnel)
     fi
     if [[ -n $PARAM_CONFIG_PATH ]]; then
-        FLAGS+=" --config \"${PARAM_CONFIG_PATH}\""
+        args+=(--config "${PARAM_CONFIG_PATH}")
     fi
     if [[ -n $PARAM_FILES ]]; then
-        FLAGS+=" --files \"${PARAM_FILES}\""
+        args+=(--files "${PARAM_FILES}")
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
-        FLAGS+=" --public-id \"${PARAM_PUBLIC_IDS}\""
+        args+=(--public-id "${PARAM_PUBLIC_IDS}")
     fi
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
-        FLAGS+=" --search \"${PARAM_TEST_SEARCH_QUERY}\""
+        args+=(--search "${PARAM_TEST_SEARCH_QUERY}")
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
-        FLAGS+=" --variables \"${PARAM_VARIABLES}\""
+        args+=(--variables "${PARAM_VARIABLES}")
     fi
-
-    read -ra flag_args < <(echo "${FLAGS}")
 
     if [[ -n $PARAM_LOCATIONS ]]; then
         export DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}"
@@ -54,7 +52,7 @@ RunTests() {
     DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
     DATADOG_SITE="${PARAM_SITE}" \
         $DATADOG_CI_COMMAND synthetics run-tests \
-        "${flag_args[@]}"
+        "${args[@]}"
 }
 
 # Will not run if sourced for bats-core tests.
