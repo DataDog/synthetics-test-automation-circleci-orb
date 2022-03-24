@@ -10,6 +10,7 @@ RunTests() {
     
     chmod +x ./datadog-ci
 
+    # Only used for unit test purposes
     if [[ -z "${DATADOG_CI_COMMAND}" ]]; then
         DATADOG_CI_COMMAND="./datadog-ci"
     fi
