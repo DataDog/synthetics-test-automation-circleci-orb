@@ -1,16 +1,25 @@
-# synthetics-ci-orb
+# Datadog Synthetics CircleCI Orb
 
 ## Overview
 
 [![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-ci-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/DataDog/synthetics-ci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
+Run Synthetic tests in your CircleCI pipelines using the Datadog CircleCI orb.
+
 The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3].
 
-The image running it must have a linux x64 base image with cURL installed.
+## Setup
 
-## Usage
+To get started:
 
-Basic example:
+1. Add your Datadog API and application keys as environment variables to your CircleCI project. See [inputs](#inputs) for naming conventions. For more information, see [API and Application Keys][2].
+2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
+
+Your workflow can be [simple](#simple-workflows) or [complex](#complex-workflows).
+
+## Simple workflows
+
+### Example workflow using public IDs
 
 ```
 version: 2.1
@@ -19,17 +28,20 @@ orbs:
   synthetics-ci: datadog/synthetics-ci-orb@1.0.1
 
 jobs:
-  integration-tests:
+  e2e-tests:
     docker: 
       - image: cimg/base:stable
     steps:
       - synthetics-ci/run-tests:
-          api_key: DATADOG_API_KEY
-          app_key: DATADOG_APP_KEY
-          files: integration-tests/*.synthetics.json
+          public_ids: 'abc-d3f-ghi, jkl-mn0-pqr'
+
+workflows:
+  run-tests:
+    jobs:
+      - e2e-tests
 ```
 
-Advanced example:
+### Example workflow using a global configuration override
 
 ```
 version: 2.1
@@ -38,20 +50,76 @@ orbs:
   synthetics-ci: datadog/synthetics-ci-orb@1.0.1
 
 jobs:
-  integration-tests:
+  e2e-tests:
     docker: 
+      - image: cimg/base:stable
+    steps:
+      - synthetics-ci/run-tests:
+          files: e2e-tests/*.synthetics.json
+
+workflows:
+  run-tests:
+    jobs:
+      - e2e-tests
+```
+
+## Complex workflows
+
+### Example workflow using the `test_search_query`
+
+```
+version: 2.1
+
+orbs:
+  synthetics-ci: datadog/synthetics-ci-orb@1.0.1
+
+jobs:
+  e2e-tests:
+    docker: 
+      - image: cimg/base:stable
+    steps:
+      - synthetics-ci/run-tests:
+          test_search_query: 'tag:e2e-tests'
+
+workflows:
+  run-tests:
+    jobs:
+      - e2e-tests
+```
+### Example workflow using the [Synthetic Testing Tunnel][10]
+
+```
+version: 2.1
+
+orbs:
+  synthetics-ci: datadog/synthetics-ci-orb@1.0.1
+
+jobs:
+  e2e-tests:
+    docker:
       - image: your-image
     steps:
       - checkout
-      - your-server-start-command -p 3000
+      - run:
+          name: Running server in background
+          command: npm start
+          background: true
       - synthetics-ci/run-tests:
-          api_key: DATADOG_API_KEY
-          app_key: DATADOG_APP_KEY
-          config_path: integration-tests/tunnel-config.json
-          files: integration-tests/*.synthetics.json
+          config_path: tests/tunnel-config.json
+          files: tests/*.synthetics.json
           test_search_query: 'tag:e2e-tests'
           tunnel: true
+
+workflows:
+  test-server:
+    jobs:
+      - build-image
+      - integration-tests:
+          requires:
+            - build-image
 ```
+
+For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][12].
 
 ## Inputs
 
@@ -72,45 +140,13 @@ Name | Type | Default | Description
 `variables` | string | _none_ | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
 `version` | string | `v1.1.1` | The version of datadog-ci to use
 
-## Run unit tests locally
-
-To use unit tests defined in the `src/tests` folder, install the [bats][4] CLI and run the following:
-
-```
-bats src/tests/
-```
-
 ## Further Reading
 
 Additional helpful documentation, links, and articles:
 
-- [CircleCI Orb Registry Page][5]
-- [CircleCI Orb Docs][6]
+- [CI/CD Integrations Configuration][6]
+- [Synthetics and CI GitHub Actions][11]
 
-### Contributing
-
-Submit [issues][7] and [pull requests][8] in this repository to contribute!
-
-### Publishing
-
-* Create and push a branch with your new features.
-* When you are ready to publish a new production version, create a pull request from the **feature branch** to `main`.
-* The title of the pull request must contain a special semver tag, `[semver:<segment>]`, where `<segment>` is replaced by one of the following values.
-
-| Increment | Description|
-| ----------| -----------|
-| major     | Issue a 1.0.0 incremented release|
-| minor     | Issue a x.1.0 incremented release|
-| patch     | Issue a x.x.1 incremented release|
-| skip      | Do not issue a release|
-
-Example: `[semver:major]`
-
-* Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
-* On merge, after manual approval, the orb will automatically be published to the Orb Registry.
-
-
-For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss][9].
 
 [1]: https://github.com/DataDog/datadog-ci/
 [2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics
@@ -121,3 +157,6 @@ For further questions/comments about this or other orbs, visit the Orb Category 
 [7]: https://github.com/DataDog/synthetics-ci-orb/issues
 [8]: https://github.com/DataDog/synthetics-ci-orb/pulls
 [9]: https://discuss.circleci.com/c/orbs
+[10]: https://docs.datadoghq.com/synthetics/testing_tunnel
+[11]: https://docs.datadoghq.com/synthetics/cicd_integrations/github_actions
+[12]: https://docs.datadoghq.com/synthetics/cicd_integrations/configuration?tab=npm  
