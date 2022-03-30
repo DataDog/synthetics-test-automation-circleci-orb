@@ -6,7 +6,7 @@
 
 Run Synthetic tests in your CircleCI pipelines using the Datadog CircleCI orb.
 
-The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [DataDog Synthetics tests][3].
+The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [Datadog Synthetic tests][3].
 
 ## Setup
 
@@ -138,7 +138,7 @@ Name | Type | Default | Description
 `test_search_query` | string | _none_ | Trigger tests corresponding to a search query.
 `tunnel` | boolean | `false` | Use the testing tunnel to trigger tests.
 `variables` | string | _none_ | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
-`version` | string | `v1.1.1` | The version of datadog-ci to use
+`version` | string | `v1.1.1` | The version of `datadog-ci` to use.
 
 ## Further Reading
 
@@ -146,6 +146,7 @@ Additional helpful documentation, links, and articles:
 
 - [CI/CD Integrations Configuration][6]
 - [Synthetics and CI GitHub Actions][11]
+- [Synthetic Testing Tunnel][10]
 
 
 [1]: https://github.com/DataDog/datadog-ci/
