@@ -7,7 +7,7 @@ RunTests() {
     fi
 
     curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/${PARAM_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
-    
+
     chmod +x ./datadog-ci
 
     # Only used for unit test purposes
@@ -63,6 +63,7 @@ RunTests() {
     DATADOG_APP_KEY="${PARAM_APP_KEY}" \
     DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
     DATADOG_SITE="${PARAM_SITE}" \
+    DATADOG_SYNTHETICS_CI_TRIGGER_APP="circle_ci_orb" \
         $DATADOG_CI_COMMAND synthetics run-tests \
         "${args[@]}"
 }

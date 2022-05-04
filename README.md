@@ -29,7 +29,7 @@ orbs:
 
 jobs:
   e2e-tests:
-    docker: 
+    docker:
       - image: cimg/base:stable
     steps:
       - synthetics-ci/run-tests:
@@ -51,7 +51,7 @@ orbs:
 
 jobs:
   e2e-tests:
-    docker: 
+    docker:
       - image: cimg/base:stable
     steps:
       - synthetics-ci/run-tests:
@@ -75,7 +75,7 @@ orbs:
 
 jobs:
   e2e-tests:
-    docker: 
+    docker:
       - image: cimg/base:stable
     steps:
       - synthetics-ci/run-tests:
@@ -138,7 +138,7 @@ Name | Type | Default | Description
 `test_search_query` | string | _none_ | Trigger tests corresponding to a search query.
 `tunnel` | boolean | `false` | Use the testing tunnel to trigger tests.
 `variables` | string | _none_ | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
-`version` | string | `v1.1.1` | The version of `datadog-ci` to use.
+`version` | string | `v1.4.0` | The version of `datadog-ci` to use.
 
 ## Further Reading
 
@@ -160,4 +160,4 @@ Additional helpful documentation, links, and articles:
 [9]: https://discuss.circleci.com/c/orbs
 [10]: https://docs.datadoghq.com/synthetics/testing_tunnel
 [11]: https://docs.datadoghq.com/synthetics/cicd_integrations/github_actions
-[12]: https://docs.datadoghq.com/synthetics/cicd_integrations/configuration?tab=npm  
+[12]: https://docs.datadoghq.com/synthetics/cicd_integrations/configuration?tab=npm

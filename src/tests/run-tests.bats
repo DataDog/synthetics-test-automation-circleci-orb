@@ -16,11 +16,11 @@ setup() {
     export PARAM_SUBDOMAIN="app1"
     export PARAM_TEST_SEARCH_QUERY="apm"
     export PARAM_TUNNEL="1"
-    export PARAM_VERSION="v1.1.1"
+    export PARAM_VERSION="v1.4.0"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
-    
+
     if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --public-id jak-not-now --public-id jak-one-mor --search apm"
     then
       echo $result
@@ -41,7 +41,7 @@ setup() {
     export PARAM_SUBDOMAIN=""
     export PARAM_TEST_SEARCH_QUERY=""
     export PARAM_TUNNEL="0"
-    export PARAM_VERSION="v1.1.1"
+    export PARAM_VERSION="v1.4.0"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
