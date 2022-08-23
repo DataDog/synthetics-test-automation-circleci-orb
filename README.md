@@ -140,14 +140,13 @@ For additional options such as customizing the `pollingTimeout` for your CircleC
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
 | `version`                 | string       | `v1.7.0`                                  | The version of `datadog-ci` to use.                                                                  |
 
-## Further Reading
+## Further reading
 
 Additional helpful documentation, links, and articles:
 
 - [CI/CD Integrations Configuration][6]
 - [Synthetics and CI GitHub Actions][11]
 - [Synthetic Testing Tunnel][10]
-
 
 [1]: https://github.com/DataDog/datadog-ci/
 [2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics
@@ -158,6 +157,6 @@ Additional helpful documentation, links, and articles:
 [7]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/issues
 [8]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/pulls
 [9]: https://discuss.circleci.com/c/orbs
-[10]: https://docs.datadoghq.com/synthetics/testing_tunnel
-[11]: https://docs.datadoghq.com/synthetics/cicd_integrations/github_actions
-[12]: https://docs.datadoghq.com/synthetics/cicd_integrations/configuration?tab=npm
+[10]: https://docs.datadoghq.com/continuous_testing/testing_tunnel
+[11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/github_actions
+[12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration?tab=npm
