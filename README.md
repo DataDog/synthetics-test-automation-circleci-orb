@@ -17,9 +17,9 @@ To get started:
 
 Your workflow can be [simple](#simple-workflows) or [complex](#complex-workflows).
 
-## Simple workflows
+## Simple usage
 
-### Example workflow using public IDs
+### Example orb usage using public IDs
 
 ```
 version: 2.1
@@ -41,7 +41,7 @@ workflows:
       - e2e-tests
 ```
 
-### Example workflow using a global configuration override
+### Example orb usage using a global configuration override
 
 ```
 version: 2.1
@@ -63,9 +63,9 @@ workflows:
       - e2e-tests
 ```
 
-## Complex workflows
+## Complex usage
 
-### Example workflow using the `test_search_query`
+### Example orb usage using the `test_search_query`
 
 ```
 version: 2.1
@@ -86,7 +86,7 @@ workflows:
     jobs:
       - e2e-tests
 ```
-### Example workflow using the [Synthetic Testing Tunnel][10]
+### Example orb usage using the [Synthetic Testing Tunnel][10]
 
 ```
 version: 2.1
