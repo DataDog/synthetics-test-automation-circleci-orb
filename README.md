@@ -15,11 +15,11 @@ To get started:
 1. Add your Datadog API and application keys as environment variables to your CircleCI project. See [inputs](#inputs) for naming conventions. For more information, see [API and Application Keys][2].
 2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
 
-Your workflow can be [simple](#simple-workflows) or [complex](#complex-workflows).
+Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 
-## Simple workflows
+## Simple usage
 
-### Example workflow using public IDs
+### Example orb usage using public IDs
 
 ```
 version: 2.1
@@ -41,7 +41,7 @@ workflows:
       - e2e-tests
 ```
 
-### Example workflow using a global configuration override
+### Example orb usage using a global configuration override
 
 ```
 version: 2.1
@@ -63,9 +63,9 @@ workflows:
       - e2e-tests
 ```
 
-## Complex workflows
+## Complex usage
 
-### Example workflow using the `test_search_query`
+### Example orb usage using the `test_search_query`
 
 ```
 version: 2.1
@@ -86,7 +86,7 @@ workflows:
     jobs:
       - e2e-tests
 ```
-### Example workflow using the [Synthetic Testing Tunnel][10]
+### Example orb usage using the [Synthetic Testing Tunnel][10]
 
 ```
 version: 2.1
