@@ -15,7 +15,7 @@ To get started:
 1. Add your Datadog API and application keys as environment variables to your CircleCI project. See [inputs](#inputs) for naming conventions. For more information, see [API and Application Keys][2].
 2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
 
-Your workflow can be [simple](#simple-workflows) or [complex](#complex-workflows).
+Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 
 ## Simple usage
 
