@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
  - TBD
 
+## [1.3.0] - 2022-10-10
+- Update default datadog-ci version to `1.16.0`.
+
 ## [1.2.0] - 2022-05-19
 - Update default datadog-ci version to `1.7.0`.
 

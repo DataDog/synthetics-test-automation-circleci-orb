@@ -138,7 +138,7 @@ For additional options such as customizing the `pollingTimeout` for your CircleC
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                       |
 | `tunnel`                  | boolean      | `false`                                   | Use the testing tunnel to trigger tests.                                                             |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
-| `version`                 | string       | `v1.7.0`                                  | The version of `datadog-ci` to use.                                                                  |
+| `version`                 | string       | `v1.16.0`                                 | The version of `datadog-ci` to use.                                                                  |
 
 ## Further Reading
 
