@@ -16,7 +16,7 @@ setup() {
     export PARAM_SUBDOMAIN="app1"
     export PARAM_TEST_SEARCH_QUERY="apm"
     export PARAM_TUNNEL="1"
-    export PARAM_VERSION="v1.7.0"
+    export PARAM_VERSION="v1.16.0"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
@@ -41,7 +41,7 @@ setup() {
     export PARAM_SUBDOMAIN=""
     export PARAM_TEST_SEARCH_QUERY=""
     export PARAM_TUNNEL="0"
-    export PARAM_VERSION="v1.7.0"
+    export PARAM_VERSION="v1.16.0"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
