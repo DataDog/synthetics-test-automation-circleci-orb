@@ -51,7 +51,7 @@ RunTests() {
         variables=$(echo "${PARAM_VARIABLES}" | tr "," "\n")
         for variable in $variables
         do
-            args+=(--variables "${variable}")
+            args+=(--variable "${variable}")
         done
     fi
 
