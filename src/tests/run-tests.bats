@@ -17,11 +17,12 @@ setup() {
     export PARAM_TEST_SEARCH_QUERY="apm"
     export PARAM_TUNNEL="1"
     export PARAM_VERSION="v1.16.0"
+    export PARAM_VARIABLES="KEY=value ANOTHER_KEY=another_value"
     export DATADOG_CI_COMMAND="echo"
 
     result=$(RunTests)
 
-    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --public-id jak-not-now --public-id jak-one-mor --search apm"
+    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value"
     then
       echo $result
       exit 1
