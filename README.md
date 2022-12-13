@@ -2,7 +2,7 @@
 
 ## Overview
 
-[![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb.svg?style=shield 'CircleCI Build Status')](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 Run Synthetic tests in your CircleCI pipelines using the Datadog CircleCI orb.
 
@@ -86,6 +86,7 @@ workflows:
     jobs:
       - e2e-tests
 ```
+
 ### Example orb usage using the [Synthetic Testing Tunnel][10]
 
 ```
@@ -138,7 +139,7 @@ For additional options such as customizing the `pollingTimeout` for your CircleC
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                       |
 | `tunnel`                  | boolean      | `false`                                   | Use the testing tunnel to trigger tests.                                                             |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
-| `version`                 | string       | `v1.16.0`                                 | The version of `datadog-ci` to use.                                                                  |
+| `version`                 | string       | `v2.2.0`                                  | The version of `datadog-ci` to use.                                                                  |
 
 ## Further reading
 
