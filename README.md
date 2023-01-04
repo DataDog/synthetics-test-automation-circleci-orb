@@ -147,6 +147,7 @@ Additional helpful documentation, links, and articles:
 
 - [Continuous Testing and CI/CD Configuration][6]
 - [Continuous Testing and CI GitHub Actions][11]
+- [Best practices for continuous testing with Datadog][13]
 - [Synthetic Testing Tunnel][10]
 
 [1]: https://github.com/DataDog/datadog-ci/
@@ -161,3 +162,4 @@ Additional helpful documentation, links, and articles:
 [10]: https://docs.datadoghq.com/continuous_testing/testing_tunnel
 [11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/github_actions
 [12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration?tab=npm
+[13]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
