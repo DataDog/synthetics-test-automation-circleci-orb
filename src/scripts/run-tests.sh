@@ -37,6 +37,9 @@ RunTests() {
             args+=(--files "${file}")
         done
     fi
+    if [[ -n $PARAM_JUNIT_REPORT ]]; then
+        args+=(--jUnitReport "${PARAM_JUNIT_REPORT}")
+    fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         public_ids=$(echo "${PARAM_PUBLIC_IDS}" | tr "," "\n")
         for public_id in $public_ids

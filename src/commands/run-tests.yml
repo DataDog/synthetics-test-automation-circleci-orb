@@ -25,6 +25,10 @@ parameters:
     type: string
     description: Glob pattern to detect Synthetic tests config files.
     default: ""
+  junit_report:
+    type: string
+    description: The filename for a JUnit report if you want to generate one.
+    default: ""
   locations:
     type: string
     description: String of locations separated by semicolons to override the locations where your tests run.
@@ -66,6 +70,7 @@ steps:
         PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
         PARAM_FAIL_ON_TIMEOUT: <<parameters.fail_on_timeout>>
         PARAM_FILES: <<parameters.files>>
+        PARAM_JUNIT_REPORT: <<parameters.junit_report>>
         PARAM_LOCATIONS: <<parameters.locations>>
         PARAM_PUBLIC_IDS: <<parameters.public_ids>>
         PARAM_SITE: <<parameters.site>>
