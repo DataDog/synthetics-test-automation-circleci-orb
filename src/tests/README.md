@@ -55,7 +55,7 @@ fi
 
 ```
 
-We want our script to execute when running in our CI environment or locally, but we don't want to execute our script if we are testing it. In the case of testing, we only want to source the functions within our script, this allows us to mock inputs and test individual functions.
+You want your script to execute when running in your CI environment or locally, but you don't want to execute your script if you are testing it. In the case of testing, you only want to source the functions within your script—this allows you to mock inputs and test individual functions.
 
 **A POSIX Compliant Source Checking Method:**
 
