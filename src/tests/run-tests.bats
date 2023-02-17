@@ -10,6 +10,7 @@ setup() {
     export PARAM_CONFIG_PATH="./some/other/path.json"
     export PARAM_FAIL_ON_TIMEOUT="1"
     export PARAM_FILES="test1.json"
+    export PARAM_JUNIT_REPORT="reports/TEST-1.xml"
     export PARAM_LOCATIONS="aws:eu-west-1"
     export PARAM_PUBLIC_IDS="jak-not-now,jak-one-mor"
     export PARAM_SITE="datadoghq.eu"
@@ -22,7 +23,7 @@ setup() {
 
     result=$(RunTests)
 
-    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value"
+    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value"
     then
       echo $result
       exit 1
@@ -36,6 +37,7 @@ setup() {
     export PARAM_FAIL_ON_CRITICAL_ERRORS="0"
     export PARAM_FAIL_ON_TIMEOUT="1"
     export PARAM_FILES=""
+    export PARAM_JUNIT_REPORT=""
     export PARAM_LOCATIONS=""
     export PARAM_PUBLIC_IDS=""
     export PARAM_SITE=""
