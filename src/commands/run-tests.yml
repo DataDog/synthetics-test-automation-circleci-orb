@@ -12,7 +12,7 @@ parameters:
   config_path:
     type: string
     description: The global JSON configuration used when launching tests.
-    default: ""
+    default: ''
   fail_on_critical_errors:
     type: boolean
     description: Fail if tests were not triggered or results could not be fetched.
@@ -24,31 +24,31 @@ parameters:
   files:
     type: string
     description: Glob pattern to detect Synthetic tests config files.
-    default: ""
+    default: ''
   junit_report:
     type: string
     description: The filename for a JUnit report if you want to generate one.
-    default: ""
+    default: ''
   locations:
     type: string
     description: String of locations separated by semicolons to override the locations where your tests run.
-    default: ""
+    default: ''
   public_ids:
     type: string
     description: String of public IDs separated by commas for Synthetic tests you want to trigger.
-    default: ""
+    default: ''
   site:
     type: string
     description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
-    default: "datadoghq.com"
+    default: 'datadoghq.com'
   subdomain:
     type: string
     description: The name of the custom subdomain set to access your Datadog application.
-    default: "app"
+    default: 'app'
   test_search_query:
     type: string
     description: Trigger tests corresponding to a search query.
-    default: ""
+    default: ''
   tunnel:
     type: boolean
     description: Use the testing tunnel to trigger tests.
@@ -56,11 +56,11 @@ parameters:
   variables:
     type: string
     description: Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
-    default: ""
+    default: ''
   version:
     type: string
     description: Version of datadog-ci.
-    default: "v2.2.0"
+    default: 'v2.2.0'
 steps:
   - run:
       environment:
