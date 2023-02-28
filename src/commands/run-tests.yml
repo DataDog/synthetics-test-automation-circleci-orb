@@ -57,10 +57,6 @@ parameters:
     type: string
     description: Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.
     default: ''
-  version:
-    type: string
-    description: Version of datadog-ci.
-    default: 'v2.2.0'
 steps:
   - run:
       environment:
@@ -78,6 +74,5 @@ steps:
         PARAM_TEST_SEARCH_QUERY: <<parameters.test_search_query>>
         PARAM_TUNNEL: <<parameters.tunnel>>
         PARAM_VARIABLES: <<parameters.variables>>
-        PARAM_VERSION: <<parameters.version>>
       name: Run Datadog Synthetics tests
       command: <<include(scripts/run-tests.sh)>>
