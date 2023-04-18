@@ -135,7 +135,7 @@ For additional options such as customizing the `pollingTimeout` for your CircleC
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                         |
 | `locations`               | string       | _values in test config files_             | String of locations separated by semicolons to override the locations where your tests run.          |
 | `public_ids`              | string       | _values in test config files_             | String of public IDs separated by commas for Synthetic tests you want to trigger.                    |
-| `site`                    | string       | `datadoghq.com`                           | The [Datadog site][14] to send data to. Your Datadog site is {{< region-param key="dd_site" code="true" >}}. If the `DD_SITE` environment variable is set, it takes preference. |
+| `site`                    | string       | `datadoghq.com`                           | The [Datadog site][14] to send data to. If the `DD_SITE` environment variable is set, it takes preference. |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                             |
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                       |
 | `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                             |
