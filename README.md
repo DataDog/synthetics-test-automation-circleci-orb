@@ -140,10 +140,10 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                         |
 | `locations`               | string       | _values in test config files_             | String of locations separated by semicolons to override the locations where your tests run.          |
 | `public_ids`              | string       | _values in test config files_             | String of public IDs separated by commas for Synthetic tests you want to trigger.                    |
-| `site`                    | string       | `datadoghq.com`                           | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference. |
+| `site`                    | string       | `datadoghq.com`                           | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference. |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                             |
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                       |
-| `tunnel`                  | boolean      | `false`                                   | Use the testing tunnel to trigger tests.                                                             |
+| `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                             |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
 
 To customize parameters such as `pollingTimeout` and learn about additional options for your CircleCI pipelines, see [CI/CD Integrations Configuration][12].
@@ -173,3 +173,4 @@ Additional helpful documentation, links, and articles:
 [14]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/commands/run-tests.yml
 [15]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
 [16]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
+[17]: https://docs.datadoghq.com/getting_started/site/
