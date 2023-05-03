@@ -43,5 +43,6 @@ workflows:
       - orb-tools/continue:
           pipeline-number: << pipeline.number >>
           vcs-type: << pipeline.project.type >>
-          requires: [orb-tools/publish]
+          requires:
+            - orb-tools/publish
           filters: *all-branches-and-tags
