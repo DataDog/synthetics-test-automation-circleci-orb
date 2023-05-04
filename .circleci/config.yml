@@ -31,6 +31,7 @@ workflows:
           orb-name: datadog/synthetics-ci-orb
           vcs-type: << pipeline.project.type >>
           context: orb-publishing # A restricted context containing private publishing credentials. Will only execute if approved by an authorized user.
+          enable-pr-comment: false
           requires:
             - orb-tools/lint
             - orb-tools/pack
