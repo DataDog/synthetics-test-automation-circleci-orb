@@ -23,7 +23,7 @@ jobs:
       - checkout
       - synthetics-ci-orb/run-tests:
           fail_on_critical_errors: true
-          files: "ci/file with space.json"
+          files: 'ci/file with space.json'
   integration-test-with-multiple-public-ids:
     docker:
       - image: cimg/base:stable
@@ -51,6 +51,7 @@ workflows:
           vcs-type: << pipeline.project.type >>
           context: orb-publishing # A restricted context containing private publishing credentials. Will only execute if approved by an authorized user.
           pub-type: production
+          enable-pr-comment: false
           requires:
             - integration-test-simple
             - integration-test-with-spaces
