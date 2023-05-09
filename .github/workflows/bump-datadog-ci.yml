@@ -29,19 +29,12 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ steps.get-token.outputs.token }}
-      - name: Install node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'
-          cache: 'yarn'
       - name: Create release branch
         run: git checkout -b local-branch
       - name: Set git user
         run: |
           git config user.name "${GIT_AUTHOR_NAME}"
           git config user.email "${GIT_AUTHOR_EMAIL}"
-      - name: Install dependencies
-        run: yarn install
       - name: Bump datadog-ci
         id: bump-datadog-ci
         run: |
@@ -50,7 +43,7 @@ jobs:
             VERSION=$(npm view @datadog/datadog-ci --json | jq -r '.version')
           fi
 
-          yarn add @datadog/datadog-ci@^$VERSION
+          sed -i -E "s/(DATADOG_CI_VERSION)=.*/\1=$VERSION_TAG/" src/scripts/run-tests.sh
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       - name: Create bump commit
         run: git commit -a --message '[dep] Bump datadog-ci to `${{ steps.bump-datadog-ci.outputs.VERSION }}`'
