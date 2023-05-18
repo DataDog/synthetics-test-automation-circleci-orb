@@ -43,6 +43,8 @@ workflows:
 
 ### Example orb usage using a global configuration override
 
+This orb overrides the path to the pattern for test files.
+
 ```
 version: 2.1
 
@@ -62,6 +64,8 @@ workflows:
     jobs:
       - e2e-tests
 ```
+
+For an example test file, see this [`test.synthetics.json` file][15].
 
 ## Complex usage
 
@@ -120,7 +124,7 @@ workflows:
             - build-image
 ```
 
-For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][12].
+For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][12]. For an example test file, see this [`test.synthetics.json` file][15].
 
 ## Inputs
 
@@ -164,3 +168,4 @@ Additional helpful documentation, links, and articles:
 [12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration?tab=npm
 [13]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
 [14]: https://docs.datadoghq.com/getting_started/site/
+[15]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/test.synthetics.json
