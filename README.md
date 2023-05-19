@@ -12,8 +12,9 @@ The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synth
 
 To get started:
 
-1. Add your Datadog API and application keys as environment variables to your CircleCI project. See [inputs](#inputs) for naming conventions. For more information, see [API and Application Keys][2].
+1. Add your Datadog API and application keys as environment variables to your CircleCI project. For more information, see [API and Application Keys][2].
 2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
+3. Customize your workflow by creating a [`run-tests.yml`][14] file and following the naming conventions to specify [inputs](#inputs) for your workflow.
 
 Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 
@@ -43,7 +44,7 @@ workflows:
 
 ### Example orb usage using a global configuration override
 
-This orb overrides the path to the pattern for test files.
+This orb overrides the path to the pattern for [test files][18].
 
 ```
 version: 2.1
@@ -65,7 +66,7 @@ workflows:
       - e2e-tests
 ```
 
-For an example test file, see this [`test.synthetics.json` file][15].
+For another example pipeline that triggers Synthetic tests, see the [`simple-example.yml` file][15].
 
 ## Complex usage
 
@@ -124,9 +125,11 @@ workflows:
             - build-image
 ```
 
-For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][12]. For an example test file, see this [`test.synthetics.json` file][15].
+For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][18]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
 
 ## Inputs
+
+To customize your workflow, you can set the following parameters in a [`run-tests.yml` file][14]:
 
 | Name                      | Type         | Default                                   | Description                                                                                          |
 | ------------------------- | ------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -139,11 +142,13 @@ For additional options such as customizing the `pollingTimeout` for your CircleC
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                         |
 | `locations`               | string       | _values in test config files_             | String of locations separated by semicolons to override the locations where your tests run.          |
 | `public_ids`              | string       | _values in test config files_             | String of public IDs separated by commas for Synthetic tests you want to trigger.                    |
-| `site`                    | string       | `datadoghq.com`                           | The [Datadog site][14] to send data to. If the `DD_SITE` environment variable is set, it takes preference. |
+| `site`                    | string       | `datadoghq.com`                           | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference. |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                             |
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                       |
 | `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                             |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
+
+To customize parameters such as `pollingTimeout` and learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
 
 ## Further reading
 
@@ -167,5 +172,8 @@ Additional helpful documentation, links, and articles:
 [11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/github_actions
 [12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration?tab=npm
 [13]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
-[14]: https://docs.datadoghq.com/getting_started/site/
-[15]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
+[14]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/commands/run-tests.yml
+[15]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
+[16]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
+[17]: https://docs.datadoghq.com/getting_started/site/
+[18]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
