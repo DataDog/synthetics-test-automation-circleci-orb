@@ -44,6 +44,8 @@ workflows:
 
 ### Example orb usage using a global configuration override
 
+This orb overrides the path to the pattern for [test files][18].
+
 ```
 version: 2.1
 
@@ -123,7 +125,7 @@ workflows:
             - build-image
 ```
 
-For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
+For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][18]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
 
 ## Inputs
 
@@ -146,7 +148,7 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                             |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.             |
 
-To customize parameters such as `pollingTimeout` and learn about additional options for your CircleCI pipelines, see [CI/CD Integrations Configuration][12].
+To customize parameters such as `pollingTimeout` and learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
 
 ## Further reading
 
@@ -174,3 +176,4 @@ Additional helpful documentation, links, and articles:
 [15]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
 [16]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
 [17]: https://docs.datadoghq.com/getting_started/site/
+[18]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
