@@ -43,7 +43,7 @@ jobs:
             VERSION=$(npm view @datadog/datadog-ci --json | jq -r '.version')
           fi
 
-          sed -i -E "s/(DATADOG_CI_VERSION)=.*/\1=$VERSION_TAG/" src/scripts/run-tests.sh
+          sed -i -E "s/(DATADOG_CI_VERSION)=.*/\1=\"$VERSION\"/" src/scripts/run-tests.sh
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       - name: Create bump commit
         run: git commit -a --message '[dep] Bump datadog-ci to `${{ steps.bump-datadog-ci.outputs.VERSION }}`'
