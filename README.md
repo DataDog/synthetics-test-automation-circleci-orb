@@ -26,7 +26,7 @@ Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 version: 2.1
 
 orbs:
-  synthetics-ci: datadog/synthetics-ci-orb@2.1.0
+  synthetics-ci: datadog/synthetics-ci-orb@2.2.0
 
 jobs:
   e2e-tests:
@@ -50,7 +50,7 @@ This orb overrides the path to the pattern for [test files][18].
 version: 2.1
 
 orbs:
-  synthetics-ci: datadog/synthetics-ci-orb@2.1.0
+  synthetics-ci: datadog/synthetics-ci-orb@2.2.0
 
 jobs:
   e2e-tests:
@@ -76,7 +76,7 @@ For another example pipeline that triggers Synthetic tests, see the [`simple-exa
 version: 2.1
 
 orbs:
-  synthetics-ci: datadog/synthetics-ci-orb@2.1.0
+  synthetics-ci: datadog/synthetics-ci-orb@2.2.0
 
 jobs:
   e2e-tests:
@@ -98,7 +98,7 @@ workflows:
 version: 2.1
 
 orbs:
-  synthetics-ci: datadog/synthetics-ci-orb@2.1.0
+  synthetics-ci: datadog/synthetics-ci-orb@2.2.0
 
 jobs:
   e2e-tests:
