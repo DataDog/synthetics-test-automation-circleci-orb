@@ -43,13 +43,13 @@ jobs:
         id: bump-version
         run: |
           OLD_VERSION_TAG=$(git describe --abbrev=0 --tags) # e.g. v1.0.0
-          OLD_VERSION=${OLD_VERSION/v/}
+          OLD_VERSION=${OLD_VERSION_TAG/v/}
 
           NEW_VERSION=$(./ci/increment-version.sh ${{ github.event.inputs.semver }})
           NEW_VERSION_TAG="v$NEW_VERSION" # e.g. v1.1.0
 
           # Update README with new version
-          sed -i -E "s/$OLD_VERSION/$NEW_VERSION/" {README.md,src/examples/*.yml}
+          sed -i "s/$OLD_VERSION/$NEW_VERSION/" {README.md,src/examples/*.yml}
 
           echo "NEW_VERSION_TAG=$NEW_VERSION_TAG" >> $GITHUB_OUTPUT
       - name: Commit new version
