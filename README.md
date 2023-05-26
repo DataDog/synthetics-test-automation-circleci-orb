@@ -134,7 +134,7 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | Name                      | Type         | Default                                   | Description                                                                                                |
 | ------------------------- | ------------ | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `api_key`                 | env var name | `DATADOG_API_KEY`                         | The name of the environment variable containing the API key.                                               |
-| `api_key`                 | env var name | `DATADOG_APP_KEY`                         | The name of the environment variable containing the app key.                                               |
+| `app_key`                 | env var name | `DATADOG_APP_KEY`                         | The name of the environment variable containing the APP key.                                               |
 | `config_path`             | string       | `datadog-ci.json`                         | The global JSON configuration used when launching tests.                                                   |
 | `fail_on_critical_errors` | boolean      | `false`                                   | Fail if tests were not triggered or results could not be fetched.                                          |
 | `fail_on_timeout`         | boolean      | `true`                                    | Force the CI to fail (or pass) if one of the results exceeds its test timeout.                             |
