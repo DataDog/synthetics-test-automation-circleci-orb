@@ -17,6 +17,10 @@ parameters:
     type: boolean
     description: Fail if tests were not triggered or results could not be fetched.
     default: false
+  fail_on_missing_tests:
+    type: boolean
+    description: Fail if at least one test is missing in a run (for example, if it has been removed or deleted).
+    default: false
   fail_on_timeout:
     type: boolean
     description: Force the CI to fail (or pass) if one of the results exceeds its test timeout.
@@ -64,6 +68,7 @@ steps:
         PARAM_APP_KEY: <<parameters.app_key>>
         PARAM_CONFIG_PATH: <<parameters.config_path>>
         PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
+        PARAM_FAIL_ON_MISSING_TESTS: <<parameters.fail_on_missing_tests>>
         PARAM_FAIL_ON_TIMEOUT: <<parameters.fail_on_timeout>>
         PARAM_FILES: <<parameters.files>>
         PARAM_JUNIT_REPORT: <<parameters.junit_report>>

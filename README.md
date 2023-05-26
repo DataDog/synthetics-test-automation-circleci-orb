@@ -137,6 +137,7 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `app_key`                 | env var name | `DATADOG_APP_KEY`                         | The name of the environment variable containing the APP key.                                               |
 | `config_path`             | string       | `datadog-ci.json`                         | The global JSON configuration used when launching tests.                                                   |
 | `fail_on_critical_errors` | boolean      | `false`                                   | Fail if tests were not triggered or results could not be fetched.                                          |
+| `fail_on_missing_tests`   | boolean      | `false`                                   | Fail if at least one test is missing in a run (for example, if it has been removed or deleted).            |
 | `fail_on_timeout`         | boolean      | `true`                                    | Force the CI to fail (or pass) if one of the results exceeds its test timeout.                             |
 | `files`                   | string       | `{,!(node_modules)/**/}*.synthetics.json` | Glob pattern to detect Synthetic tests config files.                                                       |
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                               |
