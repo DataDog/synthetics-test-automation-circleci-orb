@@ -7,7 +7,7 @@ parameters:
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the app key.
+    description: The name of the environment variable containing the APP key.
     default: DATADOG_APP_KEY
   config_path:
     type: string
