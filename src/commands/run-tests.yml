@@ -19,7 +19,7 @@ parameters:
     default: false
   fail_on_missing_tests:
     type: boolean
-    description: Fail if at least one test is missing in a run (for example, if it has been removed or deleted).
+    description: Fail if at least one specified test with a public ID (using `public_ids` or listed in a test file) is missing in a run (for example, if it has been deleted programmatically or on the Datadog site).
     default: false
   fail_on_timeout:
     type: boolean
