@@ -7,7 +7,7 @@ parameters:
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the app key.
+    description: The name of the environment variable containing the APP key.
     default: DATADOG_APP_KEY
   config_path:
     type: string
@@ -16,6 +16,10 @@ parameters:
   fail_on_critical_errors:
     type: boolean
     description: Fail if tests were not triggered or results could not be fetched.
+    default: false
+  fail_on_missing_tests:
+    type: boolean
+    description: Fail if at least one specified test with a public ID (using `public_ids` or listed in a test file) is missing in a run (for example, if it has been deleted programmatically or on the Datadog site).
     default: false
   fail_on_timeout:
     type: boolean
@@ -64,6 +68,7 @@ steps:
         PARAM_APP_KEY: <<parameters.app_key>>
         PARAM_CONFIG_PATH: <<parameters.config_path>>
         PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
+        PARAM_FAIL_ON_MISSING_TESTS: <<parameters.fail_on_missing_tests>>
         PARAM_FAIL_ON_TIMEOUT: <<parameters.fail_on_timeout>>
         PARAM_FILES: <<parameters.files>>
         PARAM_JUNIT_REPORT: <<parameters.junit_report>>

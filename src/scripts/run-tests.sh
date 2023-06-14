@@ -20,6 +20,9 @@ RunTests() {
     if [[ $PARAM_FAIL_ON_CRITICAL_ERRORS == "1" ]]; then
         args+=(--failOnCriticalErrors)
     fi
+    if [[ $PARAM_FAIL_ON_MISSING_TESTS == "1" ]]; then
+        args+=(--failOnMissingTests)
+    fi
     if [[ $PARAM_FAIL_ON_TIMEOUT == "1" ]]; then
         args+=(--failOnTimeout)
     else
