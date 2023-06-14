@@ -22,13 +22,7 @@ setup() {
     export PARAM_VARIABLES="KEY=value ANOTHER_KEY=another_value"
     export DATADOG_CI_COMMAND="echo"
 
-    result=$(RunTests)
-
-    if ! echo $result | grep -q "synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value"
-    then
-      echo $result
-      exit 1
-    fi
+    diff <(RunTests) <(echo "synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value")
 }
 
 @test 'Use default parameters' {
@@ -50,9 +44,5 @@ setup() {
 
     result=$(RunTests)
 
-    if ! echo $result | grep -q "synthetics run-tests --failOnTimeout"
-    then
-      echo $result
-      exit 1
-    fi
+    diff <(RunTests) <(echo "synthetics run-tests --failOnTimeout")
 }
