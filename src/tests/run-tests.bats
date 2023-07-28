@@ -14,6 +14,7 @@ setup() {
     export PARAM_FILES="test1.json"
     export PARAM_JUNIT_REPORT="reports/TEST-1.xml"
     export PARAM_LOCATIONS="aws:eu-west-1"
+    export PARAM_POLLING_TIMEOUT="123"
     export PARAM_PUBLIC_IDS="jak-not-now,jak-one-mor"
     export PARAM_SITE="datadoghq.eu"
     export PARAM_SUBDOMAIN="app1"
@@ -22,7 +23,7 @@ setup() {
     export PARAM_VARIABLES="KEY=value ANOTHER_KEY=another_value"
     export DATADOG_CI_COMMAND="echo"
 
-    diff <(RunTests) <(echo "synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value")
+    diff <(RunTests) <(echo "synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --pollingTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value")
 }
 
 @test 'Use default parameters' {
@@ -35,6 +36,7 @@ setup() {
     export PARAM_FILES=""
     export PARAM_JUNIT_REPORT=""
     export PARAM_LOCATIONS=""
+    export PARAM_POLLING_TIMEOUT=""
     export PARAM_PUBLIC_IDS=""
     export PARAM_SITE=""
     export PARAM_SUBDOMAIN=""

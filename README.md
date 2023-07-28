@@ -142,6 +142,7 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `files`                   | string       | `{,!(node_modules)/**/}*.synthetics.json` | Glob pattern to detect Synthetic tests config files.                                                                                                                                                        |
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                                                                                                                                |
 | `locations`               | string       | _values in [test files][18]_              | String of locations separated by semicolons to override the locations where your tests run.                                                                                                                 |
+| `polling_timeout`         | number       | _30 minutes_                              | The duration (in milliseconds) after which the action stops polling for test results. At the CI level, test results completed after this duration are considered failed.                                    |
 | `public_ids`              | string       | _values in [test files][18]_              | String of public IDs separated by commas for Synthetic tests you want to trigger.                                                                                                                           |
 | `site`                    | string       | `datadoghq.com`                           | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference.                                                                                                  |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                                                                                                                                    |
@@ -149,7 +150,7 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                                                                                                                         |
 | `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests. Must be formatted using `KEY=VALUE`.                                                                                                                    |
 
-To customize parameters such as `pollingTimeout` and learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
+To learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
 
 ## Further reading
 
