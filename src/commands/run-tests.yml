@@ -11,7 +11,7 @@ parameters:
     default: DATADOG_APP_KEY
   background:
     type: boolean
-    description: Whether or not this step should run in the background
+    description: Whether or not this step should run in the background.
     default: false
   config_path:
     type: string
