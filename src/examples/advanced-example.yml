@@ -4,7 +4,7 @@ usage:
   version: 2.1
 
   orbs:
-    synthetics-ci: datadog/synthetics-ci-orb@2.7.0
+    synthetics-ci: datadog/synthetics-ci-orb@2.8.0
 
   jobs:
     integration-tests:
