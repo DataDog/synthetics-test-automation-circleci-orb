@@ -30,8 +30,9 @@ jobs:
     steps:
       - checkout
       - synthetics-ci-orb/run-tests:
+          config_path: ci/global.config.json
           fail_on_critical_errors: true
-          public_ids: 6jq-89z-5ur, s26-j8m-bu7
+          public_ids: pwd-mwg-3p5, 2r9-q7u-4nn
 
 workflows:
   test-deploy:
