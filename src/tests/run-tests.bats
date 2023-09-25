@@ -4,6 +4,8 @@ setup() {
     source ./src/scripts/run-tests.sh
 }
 
+DIFF_ARGS="-u --label actual --label expected"
+
 @test 'Use custom parameters' {
     export PARAM_API_KEY="DD_API_KEY"
     export PARAM_APP_KEY="DD_APP_KEY"
@@ -23,7 +25,7 @@ setup() {
     export PARAM_VARIABLES="KEY=value ANOTHER_KEY=another_value"
     export DATADOG_CI_COMMAND="echo"
 
-    diff <(RunTests) <(echo "synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --pollingTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value")
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --pollingTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value)
 }
 
 @test 'Use default parameters' {
@@ -46,5 +48,5 @@ setup() {
 
     result=$(RunTests)
 
-    diff <(RunTests) <(echo "synthetics run-tests --failOnTimeout")
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnTimeout)
 }
