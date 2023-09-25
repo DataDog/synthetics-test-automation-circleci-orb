@@ -50,3 +50,12 @@ DIFF_ARGS="-u --label actual --label expected"
 
     diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnTimeout)
 }
+
+@test 'Support spaces in filenames' {
+    export PARAM_FILES="ci/file with space.json"
+    export DATADOG_CI_COMMAND="echo"
+
+    result=$(RunTests)
+
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "ci/file with space.json")
+}

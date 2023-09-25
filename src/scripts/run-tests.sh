@@ -35,10 +35,11 @@ RunTests() {
         args+=(--config "${PARAM_CONFIG_PATH}")
     fi
     if [[ -n $PARAM_FILES ]]; then
-        files=$(echo "${PARAM_FILES}" | tr "," "\n")
-        for file in $files; do
+        IFS=","
+        for file in ${PARAM_FILES}; do
             args+=(--files "${file}")
         done
+        unset IFS
     fi
     if [[ -n $PARAM_JUNIT_REPORT ]]; then
         args+=(--jUnitReport "${PARAM_JUNIT_REPORT}")
