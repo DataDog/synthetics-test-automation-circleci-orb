@@ -7,12 +7,12 @@ RunTests() {
     fi
 
     DATADOG_CI_VERSION="2.20.0"
-    curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/v${DATADOG_CI_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
 
-    chmod +x ./datadog-ci
-
-    # Only used for unit test purposes
+    # Not run when running unit tests.
     if [[ -z "${DATADOG_CI_COMMAND}" ]]; then
+        curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/v${DATADOG_CI_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
+        chmod +x ./datadog-ci
+
         DATADOG_CI_COMMAND="./datadog-ci"
     fi
 
@@ -36,8 +36,7 @@ RunTests() {
     fi
     if [[ -n $PARAM_FILES ]]; then
         files=$(echo "${PARAM_FILES}" | tr "," "\n")
-        for file in $files
-        do
+        for file in $files; do
             args+=(--files "${file}")
         done
     fi
@@ -49,8 +48,7 @@ RunTests() {
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         public_ids=$(echo "${PARAM_PUBLIC_IDS}" | tr "," "\n")
-        for public_id in $public_ids
-        do
+        for public_id in $public_ids; do
             args+=(--public-id "${public_id}")
         done
     fi
@@ -59,8 +57,7 @@ RunTests() {
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
         variables=$(echo "${PARAM_VARIABLES}" | tr "," "\n")
-        for variable in $variables
-        do
+        for variable in $variables; do
             args+=(--variable "${variable}")
         done
     fi
