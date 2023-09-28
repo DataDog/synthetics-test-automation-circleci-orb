@@ -35,7 +35,7 @@ RunTests() {
         args+=(--config "${PARAM_CONFIG_PATH}")
     fi
     if [[ -n $PARAM_FILES ]]; then
-        IFS=","
+        IFS=$'\n'
         for file in ${PARAM_FILES}; do
             args+=(--files "${file}")
         done
