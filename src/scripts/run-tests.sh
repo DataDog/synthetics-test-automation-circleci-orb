@@ -48,19 +48,21 @@ RunTests() {
         args+=(--pollingTimeout "${PARAM_POLLING_TIMEOUT}")
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
-        public_ids=$(echo "${PARAM_PUBLIC_IDS}" | tr "," "\n")
-        for public_id in $public_ids; do
+        IFS=$'\n,'
+        for public_id in ${PARAM_PUBLIC_IDS}; do
             args+=(--public-id "${public_id}")
         done
+        unset IFS
     fi
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
         args+=(--search "${PARAM_TEST_SEARCH_QUERY}")
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
-        variables=$(echo "${PARAM_VARIABLES}" | tr "," "\n")
-        for variable in $variables; do
+        IFS=$'\n,'
+        for variable in ${PARAM_VARIABLES}; do
             args+=(--variable "${variable}")
         done
+        unset IFS
     fi
 
     if [[ -n $PARAM_LOCATIONS ]]; then
