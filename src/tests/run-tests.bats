@@ -22,10 +22,10 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_SUBDOMAIN="app1"
     export PARAM_TEST_SEARCH_QUERY="apm"
     export PARAM_TUNNEL="1"
-    export PARAM_VARIABLES="KEY=value ANOTHER_KEY=another_value"
+    export PARAM_VARIABLES='START_URL=https://example.org,MY_VARIABLE="My title"'
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --pollingTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --variable KEY=value --variable ANOTHER_KEY=another_value)
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --tunnel --config ./some/other/path.json --files test1.json --jUnitReport reports/TEST-1.xml --pollingTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
 }
 
 @test 'Use default parameters' {
