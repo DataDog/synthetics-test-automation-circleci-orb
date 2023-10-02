@@ -46,7 +46,21 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_TUNNEL="0"
     export DATADOG_CI_COMMAND="echo"
 
-    result=$(RunTests)
-
     diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --failOnTimeout)
+}
+
+@test 'Support spaces and commas in filenames' {
+    export DATADOG_CI_COMMAND="echo"
+
+    export PARAM_FILES="ci/file with space.json"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "ci/file with space.json")
+
+    export PARAM_FILES="{,!(node_modules)/**/}*.synthetics.json"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "{,!(node_modules)/**/}*.synthetics.json")
+
+    export PARAM_FILES="hello, i'm a file.txt"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "hello, i'm a file.txt")
+
+    export PARAM_FILES=$'file 1.json\nfile 2.json'
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "file 1.json" --files "file 2.json")
 }

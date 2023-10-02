@@ -23,7 +23,9 @@ jobs:
       - checkout
       - synthetics-ci-orb/run-tests:
           fail_on_critical_errors: true
-          files: 'ci/file with space.json'
+          files: |
+            ci/file with space.json
+            ci/file, with comma.json
   integration-test-with-multiple-public-ids:
     docker:
       - image: cimg/base:stable
