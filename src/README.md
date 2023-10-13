@@ -1,5 +1,7 @@
 # Orb Source
 
+trigger ci
+
 Orbs are shipped as individual `orb.yml` files. To make development easier, you can author an orb in _unpacked_ form, which can be _packed_ with the CircleCI CLI and published.
 
 The default `.circleci/config.yml` file contains the configuration code needed to automatically pack, test, and deploy any changes made to the contents of the orb source in this directory.
