@@ -98,10 +98,11 @@ jobs:
             The description of the release will exactly match this PR's description. Feel free to edit it.
 
             > [!WARNING]
-            > Publishing the **production** orb will fail because the creator of the tag is the [Release Automation](https://github.com/apps/ci-integrations-release-automation) github app, which is seen as a bot by CircleCI.
+            > Publishing the development and production orbs will fail because the creator of the tag is the [Release Automation](https://github.com/apps/ci-integrations-release-automation) github app, which is seen as a bot by CircleCI.
             >
-            > To make it pass, please \`Rerun the workflow from start\` [here](https://app.circleci.com/pipelines/github/DataDog/synthetics-test-automation-circleci-orb) on CircleCI.
-            > You should look for the latest failing \`test-deploy\` workflow, which should point to the \`${{ steps.bump-version.outputs.NEW_VERSION_TAG }}\` tag.`
+            > Specifically, the \`lint-pack\` workflow will fail first, then once passed - the \`test-deploy\` workflow will also fail.
+            > You should look for workflows pointing to the \`${{ steps.bump-version.outputs.NEW_VERSION_TAG }}\` tag.
+            > To make them pass, please \`Rerun the workflow from start\` [here](https://app.circleci.com/pipelines/github/DataDog/synthetics-test-automation-circleci-orb) on CircleCI.`
 
             github.rest.issues.createComment({
               owner: context.repo.owner,
