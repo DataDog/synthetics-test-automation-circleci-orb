@@ -6,7 +6,7 @@ RunTests() {
         PARAM_SITE=${DD_SITE}
     fi
 
-    DATADOG_CI_VERSION="2.26.0"
+    DATADOG_CI_VERSION="2.28.0"
 
     # Not run when running unit tests.
     if [[ -z "${DATADOG_CI_COMMAND}" ]]; then
