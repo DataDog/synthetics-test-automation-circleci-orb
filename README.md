@@ -22,7 +22,7 @@ Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 
 ### Example orb usage using public IDs
 
-```
+```yml
 version: 2.1
 
 orbs:
@@ -46,7 +46,7 @@ workflows:
 
 This orb overrides the path to the pattern for [test files][18].
 
-```
+```yml
 version: 2.1
 
 orbs:
@@ -72,7 +72,7 @@ For another example pipeline that triggers Synthetic tests, see the [`simple-exa
 
 ### Example orb usage using the `test_search_query`
 
-```
+```yml
 version: 2.1
 
 orbs:
@@ -94,7 +94,7 @@ workflows:
 
 ### Example orb usage using the [Continuous Testing Tunnel][10]
 
-```
+```yml
 version: 2.1
 
 orbs:
