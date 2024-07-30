@@ -17,6 +17,9 @@ RunTests() {
     fi
 
     args=()
+    if [[ -n $PARAM_CONFIG_PATH ]]; then
+        args+=(--config "${PARAM_CONFIG_PATH}")
+    fi
     if [[ $PARAM_FAIL_ON_CRITICAL_ERRORS == "1" ]]; then
         args+=(--failOnCriticalErrors)
     fi
@@ -27,12 +30,6 @@ RunTests() {
         args+=(--failOnTimeout)
     else
         args+=(--no-failOnTimeout)
-    fi
-    if [[ $PARAM_TUNNEL == "1" ]]; then
-        args+=(--tunnel)
-    fi
-    if [[ -n $PARAM_CONFIG_PATH ]]; then
-        args+=(--config "${PARAM_CONFIG_PATH}")
     fi
     if [[ -n $PARAM_FILES ]]; then
         IFS=$'\n'
@@ -56,6 +53,9 @@ RunTests() {
     fi
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
         args+=(--search "${PARAM_TEST_SEARCH_QUERY}")
+    fi
+    if [[ $PARAM_TUNNEL == "1" ]]; then
+        args+=(--tunnel)
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
         IFS=$'\n,'
