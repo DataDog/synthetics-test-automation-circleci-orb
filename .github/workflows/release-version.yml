@@ -43,7 +43,8 @@ jobs:
         id: bump-version
         run: |
           OLD_VERSION_TAG=$(git describe --abbrev=0 --tags) # e.g. v1.0.0
-          OLD_VERSION=${OLD_VERSION_TAG/v/}
+          OLD_VERSION_UNESCAPED=${OLD_VERSION_TAG/v/}
+          OLD_VERSION=${OLD_VERSION_UNESCAPED//./\\.}
 
           NEW_VERSION=$(./ci/increment-version.sh ${{ github.event.inputs.semver }})
           NEW_VERSION_TAG="v$NEW_VERSION" # e.g. v1.1.0
