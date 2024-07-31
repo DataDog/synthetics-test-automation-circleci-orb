@@ -17,6 +17,9 @@ RunTests() {
     fi
 
     args=()
+    if [[ -n $PARAM_BATCH_TIMEOUT ]]; then
+        args+=(--batchTimeout "${PARAM_BATCH_TIMEOUT}")
+    fi
     if [[ -n $PARAM_CONFIG_PATH ]]; then
         args+=(--config "${PARAM_CONFIG_PATH}")
     fi
