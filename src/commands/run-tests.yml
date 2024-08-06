@@ -13,6 +13,10 @@ parameters:
     type: boolean
     description: Whether or not this step should run in the background.
     default: false
+  batch_timeout:
+    type: integer
+    description: The duration (in milliseconds) after which the batch fails as timed out.
+    default: 1800000
   config_path:
     type: string
     description: The global JSON configuration used when launching tests.
@@ -47,7 +51,7 @@ parameters:
     default: '30m'
   polling_timeout:
     type: integer
-    description: The duration (in milliseconds) after which the action stops polling for test results.
+    description: '**DEPRECATED** The duration (in milliseconds) after which the action stops polling for test results.'
     default: 1800000
   public_ids:
     type: string
@@ -79,6 +83,7 @@ steps:
       environment:
         PARAM_API_KEY: <<parameters.api_key>>
         PARAM_APP_KEY: <<parameters.app_key>>
+        PARAM_BATCH_TIMEOUT: <<parameters.batch_timeout>>
         PARAM_CONFIG_PATH: <<parameters.config_path>>
         PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
         PARAM_FAIL_ON_MISSING_TESTS: <<parameters.fail_on_missing_tests>>
