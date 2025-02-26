@@ -1,6 +1,6 @@
 {
   "batchTimeout": 240000,
-  "global": {
+  "defaultTestOverrides": {
     "headers": {
       "X-Fake-Header": "fake value"
     }
