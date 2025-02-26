@@ -46,7 +46,7 @@ RunTests() {
     fi
     # TODO SYNTH-12989: Clean up deprecated `--pollingTimeout` in favor of `--batchTimeout`
     if [[ -n $PARAM_POLLING_TIMEOUT ]]; then
-        args+=(--pollingTimeout "${PARAM_POLLING_TIMEOUT}")
+        args+=(--batchTimeout "${PARAM_POLLING_TIMEOUT}")
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         IFS=$'\n,'
@@ -74,10 +74,10 @@ RunTests() {
     fi
 
     DATADOG_API_KEY="${PARAM_API_KEY}" \
-    DATADOG_APP_KEY="${PARAM_APP_KEY}" \
-    DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
-    DATADOG_SITE="${PARAM_SITE}" \
-    DATADOG_SYNTHETICS_CI_TRIGGER_APP="circle_ci_orb" \
+        DATADOG_APP_KEY="${PARAM_APP_KEY}" \
+        DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
+        DATADOG_SITE="${PARAM_SITE}" \
+        DATADOG_SYNTHETICS_CI_TRIGGER_APP="circle_ci_orb" \
         $DATADOG_CI_COMMAND synthetics run-tests \
         "${args[@]}"
 }
