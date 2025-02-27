@@ -17,7 +17,6 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_FILES="test1.json"
     export PARAM_JUNIT_REPORT="reports/TEST-1.xml"
     export PARAM_LOCATIONS="aws:eu-west-1"
-    export PARAM_POLLING_TIMEOUT="123"
     export PARAM_PUBLIC_IDS="jak-not-now,jak-one-mor"
     export PARAM_SITE="datadoghq.eu"
     export PARAM_SUBDOMAIN="app1"
@@ -26,7 +25,7 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_VARIABLES='START_URL=https://example.org,MY_VARIABLE="My title"'
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --batchTimeout 123 --public-id jak-not-now --public-id jak-one-mor --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
 }
 
 @test 'Use default parameters' {
@@ -40,7 +39,6 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_FILES=""
     export PARAM_JUNIT_REPORT=""
     export PARAM_LOCATIONS=""
-    export PARAM_POLLING_TIMEOUT=""
     export PARAM_PUBLIC_IDS=""
     export PARAM_SITE=""
     export PARAM_SUBDOMAIN=""

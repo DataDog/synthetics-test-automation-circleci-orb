@@ -125,7 +125,7 @@ workflows:
             - build-image
 ```
 
-For additional options such as customizing the `pollingTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][18]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
+For additional options such as customizing the `batchTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][18]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
 
 ## Inputs
 
@@ -145,7 +145,6 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                                                                                                                                            |
 | `locations`               | string       | _values in [test files][18]_              | String of locations separated by semicolons to override the locations where your tests run.                                                                                                                             |
 | `no_output_timeout`       | string       | _30 minutes_                              | Elapsed time the command can run without output. The string is a decimal with unit suffix, such as “20m”, “1.25h”, “5s”. [See official CircleCI documentation](https://circleci.com/docs/configuration-reference/#run). |
-| `polling_timeout`         | number       | _30 minutes_                              | **DEPRECATED** in favor of batch_timeout. The duration (in milliseconds) after which the action stops polling for test results. At the CI level, test results completed after this duration are considered failed.      |
 | `public_ids`              | string       | _values in [test files][18]_              | A list of test IDs for Synthetic tests you want to trigger, separated by new lines or commas.                                                                                                                           |
 | `site`                    | string       | `datadoghq.com`                           | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference.                                                                                                              |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                                                                                                                                                |

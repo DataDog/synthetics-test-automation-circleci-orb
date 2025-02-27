@@ -44,10 +44,6 @@ RunTests() {
     if [[ -n $PARAM_JUNIT_REPORT ]]; then
         args+=(--jUnitReport "${PARAM_JUNIT_REPORT}")
     fi
-    # TODO SYNTH-12989: Clean up deprecated `--pollingTimeout` in favor of `--batchTimeout`
-    if [[ -n $PARAM_POLLING_TIMEOUT ]]; then
-        args+=(--batchTimeout "${PARAM_POLLING_TIMEOUT}")
-    fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         IFS=$'\n,'
         for public_id in ${PARAM_PUBLIC_IDS}; do
