@@ -34,7 +34,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - synthetics-ci/run-tests:
-          public_ids: 'abc-d3f-ghi, jkl-mn0-pqr'
+          public_ids: |
+            abc-d3f-ghi
+            jkl-mn0-pqr
 
 workflows:
   run-tests:
@@ -145,12 +147,12 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `junit_report`            | string       | _none_                                    | The filename for a JUnit report if you want to generate one.                                                                                                                                                            |
 | `locations`               | string       | _values in [test files][18]_              | String of locations separated by semicolons to override the locations where your tests run.                                                                                                                             |
 | `no_output_timeout`       | string       | _30 minutes_                              | Elapsed time the command can run without output. The string is a decimal with unit suffix, such as “20m”, “1.25h”, “5s”. [See official CircleCI documentation](https://circleci.com/docs/configuration-reference/#run). |
-| `public_ids`              | string       | _values in [test files][18]_              | A list of test IDs for Synthetic tests you want to trigger, separated by new lines or commas.                                                                                                                           |
+| `public_ids`              | string       | _values in [test files][18]_              | Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in `*.synthetics.json` files.                                                                     |
 | `site`                    | string       | `datadoghq.com`                           | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference.                                                                                                              |
 | `subdomain`               | string       | `app`                                     | The name of the custom subdomain set to access your Datadog application.                                                                                                                                                |
 | `test_search_query`       | string       | _none_                                    | Trigger tests corresponding to a search query.                                                                                                                                                                          |
 | `tunnel`                  | boolean      | `false`                                   | Use the Continuous Testing Tunnel to trigger tests.                                                                                                                                                                     |
-| `variables`               | string       | _none_                                    | A list of global variables to use for Synthetic tests, separated by new lines or commas. For example: `START_URL=https://example.org,MY_VARIABLE="My title"`.                                                           |
+| `variables`               | string       | _none_                                    | Key-value pairs for injecting variables into tests, separated by newlines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`.                                                                 |
 
 To learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
 
