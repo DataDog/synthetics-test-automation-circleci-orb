@@ -49,10 +49,6 @@ parameters:
     type: string
     description: Elapsed time the command can run without output.
     default: '30m'
-  polling_timeout:
-    type: integer
-    description: '**DEPRECATED** The duration (in milliseconds) after which the action stops polling for test results.'
-    default: 1800000
   public_ids:
     type: string
     description: String of public IDs separated by commas for Synthetic tests you want to trigger.
