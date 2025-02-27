@@ -36,7 +36,7 @@ jobs:
       - synthetics-ci/run-tests:
           public_ids: |
             abc-d3f-ghi
-            jkl-mn0-pqr'
+            jkl-mn0-pqr
 
 workflows:
   run-tests:
