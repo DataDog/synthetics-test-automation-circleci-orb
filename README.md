@@ -1,4 +1,4 @@
-# Datadog Synthetics CircleCI Orb
+# Datadog Continuous Testing for CircleCI
 
 ## Overview
 
