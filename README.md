@@ -12,7 +12,8 @@ The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synth
 
 To get started:
 
-1. Add your Datadog API and application keys as environment variables to your CircleCI project. For more information, see [API and Application Keys][2].
+1. Add your Datadog API and application keys as environment variables to your CircleCI project.
+   - For more information, see [API and Application Keys][2].
 2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
 3. Customize your workflow by creating a [`run-tests.yml`][14] file and following the naming conventions to specify [inputs](#inputs) for your workflow.
 
