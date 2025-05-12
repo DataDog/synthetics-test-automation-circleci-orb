@@ -4,9 +4,9 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb.svg?style=shield 'CircleCI Build Status')](https://circleci.com/gh/DataDog/synthetics-test-automation-circleci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/datadog/synthetics-ci-orb.svg)](https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb) [![Apache 2.0 License](https://shields.io/badge/license-Apache--2.0-lightgray)](https://raw.githubusercontent.com/DataDog/synthetics-ci-orb/main/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-Run Synthetic tests in your CircleCI pipelines using the Datadog CircleCI orb.
+Run Datadog Synthetic tests in your CircleCI pipelines using the Datadog CircleCI orb.
 
-The CircleCI command orb installs [datadog-ci][1] and uses the `datadog-ci synthetics run-tests` [command][2] to execute [Datadog Synthetic tests][3].
+For more information on the available configuration, see the [`datadog-ci synthetics run-tests` documentation][1].
 
 ## Setup
 
@@ -14,8 +14,8 @@ To get started:
 
 1. Add your Datadog API and application keys as environment variables to your CircleCI project.
    - For more information, see [API and Application Keys][2].
-2. Ensure the image running the orb is a Linux x64 base image with cURL installed.
-3. Customize your workflow by creating a [`run-tests.yml`][14] file and following the naming conventions to specify [inputs](#inputs) for your workflow.
+2. Ensure the image running the orb is a Linux-x64-based image with `curl` installed.
+3. Customize your CircleCI workflow by adding a `synthetics-ci/run-tests` step and specifying [inputs](#inputs) as listed below.
 
 Your workflow can be [simple](#simple-usage) or [complex](#complex-usage).
 
@@ -47,7 +47,7 @@ workflows:
 
 ### Example orb usage using a global configuration override
 
-This orb overrides the path to the pattern for [test files][18].
+This orb overrides the path to the pattern for [test files][4].
 
 ```yml
 version: 2.1
@@ -69,7 +69,7 @@ workflows:
       - e2e-tests
 ```
 
-For another example pipeline that triggers Synthetic tests, see the [`simple-example.yml` file][15].
+For another example pipeline that triggers Synthetic tests, see the [`simple-example.yml` file][5].
 
 ## Complex usage
 
@@ -95,7 +95,7 @@ workflows:
       - e2e-tests
 ```
 
-### Example orb usage using the [Continuous Testing Tunnel][10]
+### Example orb usage using the [Continuous Testing tunnel][7]
 
 ```yml
 version: 2.1
@@ -128,11 +128,11 @@ workflows:
             - build-image
 ```
 
-For additional options such as customizing the `batchTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][18]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing Tunnel, see the [`advanced-example.yml` file][16].
+For additional options such as customizing the `batchTimeout` for your CircleCI pipelines, see [CI/CD Integrations Configuration][6]. For another example pipeline that starts a local server and triggers Synthetic tests using the Continuous Testing tunnel, see the [`advanced-example.yml` file][8].
 
 ## Inputs
 
-To customize your workflow, you can set the following parameters in a [`run-tests.yml` file][14]:
+For more information on the available configuration, see the [`datadog-ci synthetics run-tests` documentation][1].
 
 | Name                      | Description                                                                                                                                                                                                                                                  |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -149,38 +149,25 @@ To customize your workflow, you can set the following parameters in a [`run-test
 | `locations`               | String of locations separated by semicolons to override the locations where your tests run. <br><sub>**Default:** none</sub>                                                                                                                                 |
 | `no_output_timeout`       | Elapsed time the command can run without output. The string is a decimal with unit suffix, such as “20m”, “1.25h”, “5s”. <br><sub>[See official CircleCI documentation](https://circleci.com/docs/configuration-reference/#run) for the default value.</sub> |
 | `public_ids`              | Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in `*.synthetics.json` files. <br><sub>**Default:** none</sub>                                                                         |
-| `site`                    | The [Datadog site][17] to send data to. If the `DD_SITE` environment variable is set, it takes preference. <br><sub>**Default:** `datadoghq.com`</sub>                                                                                                       |
+| `site`                    | The [Datadog site][10] to send data to. If the `DD_SITE` environment variable is set, it takes preference. <br><sub>**Default:** `datadoghq.com`</sub>                                                                                                       |
 | `subdomain`               | The name of the custom subdomain set to access your Datadog application. <br><sub>**Default:** `app`</sub>                                                                                                                                                   |
 | `test_search_query`       | Trigger tests corresponding to a search query. <br><sub>**Default:** none</sub>                                                                                                                                                                              |
-| `tunnel`                  | Use the Continuous Testing Tunnel to trigger tests. <br><sub>**Default:** `false`</sub>                                                                                                                                                                      |
+| `tunnel`                  | Use the Continuous Testing tunnel to trigger tests. <br><sub>**Default:** `false`</sub>                                                                                                                                                                      |
 | `variables`               | Key-value pairs for injecting variables into tests, separated by newlines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`. <br><sub>**Default:** none</sub>                                                                     |
-
-To learn about additional options for your CircleCI pipelines, see [Continuous Testing & CI/CD Integrations Configuration][12].
 
 ## Further reading
 
 Additional helpful documentation, links, and articles:
 
 - [Continuous Testing and CI/CD Configuration][6]
-- [Continuous Testing and CI GitHub Actions][11]
-- [Best practices for continuous testing with Datadog][13]
-- [Continuous Testing Tunnel][10]
+- [Best practices for continuous testing with Datadog][9]
 
-[1]: https://github.com/DataDog/datadog-ci/
-[2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics
-[3]: https://docs.datadoghq.com/continuous_testing/cicd_integrations
-[4]: https://bats-core.readthedocs.io/en/stable/installation.html
-[5]: https://circleci.com/orbs/registry/orb/datadog/synthetics-ci-orb
-[6]: https://circleci.com/docs/2.0/orb-intro/#section=configuration
-[7]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/issues
-[8]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/pulls
-[9]: https://discuss.circleci.com/c/orbs
-[10]: https://docs.datadoghq.com/continuous_testing/testing_tunnel
-[11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/github_actions
-[12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration?tab=npm
-[13]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
-[14]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/commands/run-tests.yml
-[15]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
-[16]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
-[17]: https://docs.datadoghq.com/getting_started/site/
-[18]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
+[1]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#run-tests-command
+[2]: https://docs.datadoghq.com/account_management/api-app-keys/
+[4]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
+[5]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
+[6]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration
+[7]: https://docs.datadoghq.com/continuous_testing/environments/proxy_firewall_vpn#what-is-the-testing-tunnel
+[8]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
+[9]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
+[10]: https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site
