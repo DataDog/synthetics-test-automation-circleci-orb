@@ -35,7 +35,7 @@ parameters:
     default: true
   files:
     type: string
-    description: Glob pattern to detect Synthetic tests config files.
+    description: Glob patterns to detect Synthetic test configuration files, separated by new lines.
     default: ''
   junit_report:
     type: string
