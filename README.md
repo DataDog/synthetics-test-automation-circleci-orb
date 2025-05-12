@@ -152,7 +152,7 @@ For more information on the available configuration, see the [`datadog-ci synthe
 | `site`                    | Your Datadog site. The possible values are listed [in this table][10]. <br><sub>**Default:** `datadoghq.com`</sub>                                                                                              |
 | `subdomain`               | The custom subdomain to access your Datadog organization. If your URL is `myorg.datadoghq.com`, the custom subdomain is `myorg`. <br><sub>**Default:** `app`</sub>                                              |
 | `test_search_query`       | Use a [search query][14] to select which Synthetic tests to run. Use the [Synthetic Tests list page's search bar][15] to craft your query, then copy and paste it. <br><sub>**Default:** none</sub>             |
-| `tunnel`                  | Use the Continuous Testing tunnel to trigger tests. <br><sub>**Default:** `false`</sub>                                                                                                                         |
+| `tunnel`                  | Use the [Continuous Testing tunnel][7] to launch tests against internal environments. <br><sub>**Default:** `false`</sub>                                                                                       |
 | `variables`               | Key-value pairs for injecting variables into tests, separated by newlines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`. <br><sub>**Default:** none</sub>                        |
 
 ## Further reading

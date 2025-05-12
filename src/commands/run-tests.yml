@@ -67,7 +67,7 @@ parameters:
     default: ''
   tunnel:
     type: boolean
-    description: Use the testing tunnel to trigger tests.
+    description: Use the Continuous Testing tunnel to launch tests against internal environments.
     default: false
   variables:
     type: string
