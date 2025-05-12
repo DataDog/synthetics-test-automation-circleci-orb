@@ -31,7 +31,7 @@ parameters:
     default: false
   fail_on_timeout:
     type: boolean
-    description: Force the CI to fail (or pass) if one of the results exceeds its test timeout.
+    description: Fail the CI job if the CI batch fails as timed out.
     default: true
   files:
     type: string
