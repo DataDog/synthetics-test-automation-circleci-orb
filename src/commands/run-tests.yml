@@ -55,7 +55,7 @@ parameters:
     default: ''
   site:
     type: string
-    description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+    description: Your Datadog site.
     default: 'datadoghq.com'
   subdomain:
     type: string
