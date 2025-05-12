@@ -51,7 +51,7 @@ parameters:
     default: '30m'
   public_ids:
     type: string
-    description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in `*.synthetics.json` files.
+    description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic test configuration files.
     default: ''
   site:
     type: string
