@@ -63,7 +63,7 @@ parameters:
     default: 'app'
   test_search_query:
     type: string
-    description: Trigger tests corresponding to a search query.
+    description: Use a search query to select which Synthetic tests to run.
     default: ''
   tunnel:
     type: boolean

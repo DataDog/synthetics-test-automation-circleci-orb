@@ -151,7 +151,7 @@ For more information on the available configuration, see the [`datadog-ci synthe
 | `public_ids`              | Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic [test configuration files][4]. <br><sub>**Default:** none</sub>              |
 | `site`                    | Your Datadog site. The possible values are listed [in this table][10]. <br><sub>**Default:** `datadoghq.com`</sub>                                                                                              |
 | `subdomain`               | The custom subdomain to access your Datadog organization. If your URL is `myorg.datadoghq.com`, the custom subdomain is `myorg`. <br><sub>**Default:** `app`</sub>                                              |
-| `test_search_query`       | Trigger tests corresponding to a search query. <br><sub>**Default:** none</sub>                                                                                                                                 |
+| `test_search_query`       | Use a [search query][14] to select which Synthetic tests to run. Use the [Synthetic Tests list page's search bar][15] to craft your query, then copy and paste it. <br><sub>**Default:** none</sub>             |
 | `tunnel`                  | Use the Continuous Testing tunnel to trigger tests. <br><sub>**Default:** `false`</sub>                                                                                                                         |
 | `variables`               | Key-value pairs for injecting variables into tests, separated by newlines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`. <br><sub>**Default:** none</sub>                        |
 
@@ -176,3 +176,5 @@ Additional helpful documentation, links, and articles:
 [11]: https://docs.datadoghq.com/getting_started/continuous_testing/
 [12]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file
 [13]: https://circleci.com/docs/configuration-reference/#run
+[14]: https://docs.datadoghq.com/synthetics/explore/#search
+[15]: https://app.datadoghq.com/synthetics/tests
