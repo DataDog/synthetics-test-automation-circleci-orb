@@ -3,7 +3,7 @@ description: >
 parameters:
   api_key:
     type: env_var_name
-    description: The name of the environment variable containing the API key.
+    description: Name of the environment variable containing your Datadog API key.
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
