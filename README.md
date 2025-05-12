@@ -159,6 +159,7 @@ For more information on the available configuration, see the [`datadog-ci synthe
 
 Additional helpful documentation, links, and articles:
 
+- [Getting Started with Continuous Testing][11]
 - [Continuous Testing and CI/CD Configuration][6]
 - [Best practices for continuous testing with Datadog][9]
 
@@ -171,3 +172,4 @@ Additional helpful documentation, links, and articles:
 [8]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/advanced-example.yml
 [9]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
 [10]: https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site
+[11]: https://docs.datadoghq.com/getting_started/continuous_testing/
