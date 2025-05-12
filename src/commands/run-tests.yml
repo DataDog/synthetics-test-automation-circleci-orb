@@ -23,7 +23,7 @@ parameters:
     default: ''
   fail_on_critical_errors:
     type: boolean
-    description: Fail if tests were not triggered or results could not be fetched.
+    description: Fail the CI job if a critical error that is typically transient occurs, such as rate limits, authentication failures, or Datadog infrastructure issues.
     default: false
   fail_on_missing_tests:
     type: boolean
