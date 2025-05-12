@@ -43,7 +43,7 @@ parameters:
     default: ''
   locations:
     type: string
-    description: String of locations separated by semicolons to override the locations where your tests run.
+    description: Override the list of locations to run the test from.
     default: ''
   no_output_timeout:
     type: string

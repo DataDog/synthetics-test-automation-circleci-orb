@@ -146,7 +146,7 @@ For more information on the available configuration, see the [`datadog-ci synthe
 | `fail_on_timeout`         | Fail the CI job if the CI batch fails as timed out. <br><sub>**Default:** `true`</sub>                                                                                                                                                                       |
 | `files`                   | Glob patterns to detect Synthetic [test configuration files][4], separated by new lines. <br><sub>Default: `{,!(node_modules)/**/}*.synthetics.json`</sub>                                                                                                   |
 | `junit_report`            | The filename for a JUnit report if you want to generate one. <br><sub>Default: none</sub>                                                                                                                                                                    |
-| `locations`               | String of locations separated by semicolons to override the locations where your tests run. <br><sub>**Default:** none</sub>                                                                                                                                 |
+| `locations`               | Override the list of locations to run the test from. The possible values are listed [in this API response][3]. <br><sub>**Default:** none</sub>                                                                                                              |
 | `no_output_timeout`       | Elapsed time the command can run without output. The string is a decimal with unit suffix, such as “20m”, “1.25h”, “5s”. <br><sub>[See official CircleCI documentation](https://circleci.com/docs/configuration-reference/#run) for the default value.</sub> |
 | `public_ids`              | Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in `*.synthetics.json` files. <br><sub>**Default:** none</sub>                                                                         |
 | `site`                    | Your Datadog site. The possible values are listed [in this table][10]. <br><sub>**Default:** `datadoghq.com`</sub>                                                                                                                                           |
@@ -165,6 +165,7 @@ Additional helpful documentation, links, and articles:
 
 [1]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#run-tests-command
 [2]: https://docs.datadoghq.com/account_management/api-app-keys/
+[3]: https://app.datadoghq.com/api/v1/synthetics/locations?only_public=true
 [4]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#test-files
 [5]: https://github.com/DataDog/synthetics-test-automation-circleci-orb/blob/main/src/examples/simple-example.yml
 [6]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration
