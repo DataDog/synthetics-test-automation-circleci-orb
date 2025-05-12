@@ -7,7 +7,7 @@ parameters:
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the APP key.
+    description: Name of the environment variable containing your Datadog application key.
     default: DATADOG_APP_KEY
   background:
     type: boolean
