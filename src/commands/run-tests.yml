@@ -19,7 +19,7 @@ parameters:
     default: 1800000
   config_path:
     type: string
-    description: The global JSON configuration used when launching tests.
+    description: The path to the global configuration file that configures datadog-ci.
     default: ''
   fail_on_critical_errors:
     type: boolean
