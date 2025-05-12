@@ -59,7 +59,7 @@ parameters:
     default: 'datadoghq.com'
   subdomain:
     type: string
-    description: The name of the custom subdomain set to access your Datadog application.
+    description: The custom subdomain to access your Datadog organization. If your URL is `myorg.datadoghq.com`, the custom subdomain is `myorg`.
     default: 'app'
   test_search_query:
     type: string
