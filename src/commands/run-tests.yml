@@ -48,7 +48,7 @@ parameters:
   no_output_timeout:
     type: string
     description: Elapsed time the command can run without output.
-    default: '30m'
+    default: '35m'
   public_ids:
     type: string
     description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic test configuration files.
