@@ -18,7 +18,7 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_JUNIT_REPORT="reports/TEST-1.xml"
     export PARAM_LOCATIONS="aws:eu-west-1"
     export PARAM_PUBLIC_IDS="jak-not-now,jak-one-mor"
-    export PARAM_SELECTIVE_RERUN="1"
+    export PARAM_SELECTIVE_RERUN="true"
     export PARAM_SITE="datadoghq.eu"
     export PARAM_SUBDOMAIN="app1"
     export PARAM_TEST_SEARCH_QUERY="apm"
@@ -65,4 +65,17 @@ DIFF_ARGS="-u --label actual --label expected"
 
     export PARAM_FILES=$'file 1.json\nfile 2.json'
     diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "file 1.json" --files "file 2.json")
+}
+
+@test 'Selective rerun is an optional boolean' {
+    export PARAM_SELECTIVE_RERUN=""
+    export DATADOG_CI_COMMAND="echo"
+
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout)
+
+    export PARAM_SELECTIVE_RERUN="false"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --no-selectiveRerun)
+
+    export PARAM_SELECTIVE_RERUN="true"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --selectiveRerun)
 }

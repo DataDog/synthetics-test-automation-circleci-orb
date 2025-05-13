@@ -53,9 +53,9 @@ RunTests() {
         done
         unset IFS
     fi
-    if [[ $PARAM_SELECTIVE_RERUN == "1" ]]; then
+    if [[ $PARAM_SELECTIVE_RERUN == "true" ]]; then
         args+=(--selectiveRerun)
-    elif [[ $PARAM_SELECTIVE_RERUN == "0" ]]; then
+    elif [[ $PARAM_SELECTIVE_RERUN == "false" ]]; then
         args+=(--no-selectiveRerun)
     fi
     if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
