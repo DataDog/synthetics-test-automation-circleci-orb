@@ -3,11 +3,11 @@ description: >
 parameters:
   api_key:
     type: env_var_name
-    description: The name of the environment variable containing the API key.
+    description: Name of the environment variable containing your Datadog API key.
     default: DATADOG_API_KEY
   app_key:
     type: env_var_name
-    description: The name of the environment variable containing the APP key.
+    description: Name of the environment variable containing your Datadog application key.
     default: DATADOG_APP_KEY
   background:
     type: boolean
@@ -15,27 +15,27 @@ parameters:
     default: false
   batch_timeout:
     type: integer
-    description: The duration (in milliseconds) after which the batch fails as timed out.
+    description: The duration in milliseconds after which the CI batch fails as timed out. This does not affect the outcome of a test run that already started.
     default: 1800000
   config_path:
     type: string
-    description: The global JSON configuration used when launching tests.
+    description: The path to the global configuration file that configures datadog-ci.
     default: ''
   fail_on_critical_errors:
     type: boolean
-    description: Fail if tests were not triggered or results could not be fetched.
+    description: Fail the CI job if a critical error that is typically transient occurs, such as rate limits, authentication failures, or Datadog infrastructure issues.
     default: false
   fail_on_missing_tests:
     type: boolean
-    description: Fail if at least one specified test with a public ID (using `public_ids` or listed in a test file) is missing in a run (for example, if it has been deleted programmatically or on the Datadog site).
+    description: Fail the CI job if the list of tests to run is empty or if some explicitly listed tests are missing.
     default: false
   fail_on_timeout:
     type: boolean
-    description: Force the CI to fail (or pass) if one of the results exceeds its test timeout.
+    description: Fail the CI job if the CI batch fails as timed out.
     default: true
   files:
     type: string
-    description: Glob pattern to detect Synthetic tests config files.
+    description: Glob patterns to detect Synthetic test configuration files, separated by new lines.
     default: ''
   junit_report:
     type: string
@@ -43,7 +43,7 @@ parameters:
     default: ''
   locations:
     type: string
-    description: String of locations separated by semicolons to override the locations where your tests run.
+    description: Override the list of locations to run the test from.
     default: ''
   no_output_timeout:
     type: string
@@ -51,27 +51,27 @@ parameters:
     default: '30m'
   public_ids:
     type: string
-    description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in `*.synthetics.json` files.
+    description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic test configuration files.
     default: ''
   site:
     type: string
-    description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+    description: Your Datadog site.
     default: 'datadoghq.com'
   subdomain:
     type: string
-    description: The name of the custom subdomain set to access your Datadog application.
+    description: The custom subdomain to access your Datadog organization. If your URL is `myorg.datadoghq.com`, the custom subdomain is `myorg`.
     default: 'app'
   test_search_query:
     type: string
-    description: Trigger tests corresponding to a search query.
+    description: Use a search query to select which Synthetic tests to run.
     default: ''
   tunnel:
     type: boolean
-    description: Use the testing tunnel to trigger tests.
+    description: Use the Continuous Testing tunnel to launch tests against internal environments.
     default: false
   variables:
     type: string
-    description: 'Key-value pairs for injecting variables into tests, separated by newlines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`.'
+    description: 'Override existing or inject new local and global variables in Synthetic tests. For example: `START_URL=https://example.org,MY_VARIABLE=My title`.'
     default: ''
 steps:
   - run:
