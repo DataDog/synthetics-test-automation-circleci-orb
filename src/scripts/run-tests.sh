@@ -51,6 +51,7 @@ RunTests() {
         done
         unset IFS
     fi
+    echo "PARAM_SELECTIVE_RERUN: ${PARAM_SELECTIVE_RERUN}"
     if [[ $PARAM_SELECTIVE_RERUN == "1" ]]; then
         args+=(--selectiveRerun)
     elif [[ $PARAM_SELECTIVE_RERUN == "0" ]]; then
