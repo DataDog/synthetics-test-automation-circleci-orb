@@ -10,8 +10,6 @@ RunTests() {
 
     # Not run when running unit tests.
     if [[ -z "${DATADOG_CI_COMMAND}" ]]; then
-        echo "PARAM_SELECTIVE_RERUN: ${PARAM_SELECTIVE_RERUN}"
-
         curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/v${DATADOG_CI_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
         chmod +x ./datadog-ci
 
