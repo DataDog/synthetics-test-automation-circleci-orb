@@ -53,6 +53,10 @@ parameters:
     type: string
     description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic test configuration files.
     default: ''
+  selective_rerun:
+    type: boolean
+    description: Whether to only rerun failed tests. If a test has already passed for a given commit, it will not be rerun in subsequent CI batches. By default, your organization's default setting is used. Set it to `false` to force full runs when your configuration enables it by default.
+    default: ''
   site:
     type: string
     description: Your Datadog site.
@@ -88,6 +92,7 @@ steps:
         PARAM_JUNIT_REPORT: <<parameters.junit_report>>
         PARAM_LOCATIONS: <<parameters.locations>>
         PARAM_PUBLIC_IDS: <<parameters.public_ids>>
+        PARAM_SELECTIVE_RERUN: <<parameters.selective_rerun>>
         PARAM_SITE: <<parameters.site>>
         PARAM_SUBDOMAIN: <<parameters.subdomain>>
         PARAM_TEST_SEARCH_QUERY: <<parameters.test_search_query>>
