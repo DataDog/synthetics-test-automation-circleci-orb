@@ -58,7 +58,7 @@ parameters:
   # https://circleci.com/docs/reusing-config/#enum
   selective_rerun:
     type: enum
-    description: Whether to only rerun failed tests. If a test has already passed for a given commit, it will not be rerun in subsequent CI batches. By default, your organization's default setting is used. Set it to `false` to force full runs when your configuration enables it by default.
+    description: Whether to only rerun failed tests. If a test has already passed for a given commit, it is not rerun in subsequent CI batches. By default, your organization's default setting is used. Set it to `false` to force full runs when your configuration enables it by default.
     default: ''
     enum: ['', 'false', 'true']
   site:
