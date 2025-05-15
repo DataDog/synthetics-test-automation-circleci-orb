@@ -19,13 +19,14 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_JUNIT_REPORT="reports/TEST-1.xml"
     export PARAM_LOCATIONS="aws:eu-west-1"
     export PARAM_PUBLIC_IDS="jak-not-now,jak-one-mor"
+    export PARAM_SELECTIVE_RERUN="true"
     export PARAM_SUBDOMAIN="app1"
     export PARAM_TEST_SEARCH_QUERY="apm"
     export PARAM_TUNNEL="1"
     export PARAM_VARIABLES='START_URL=https://example.org,MY_VARIABLE="My title"'
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --selectiveRerun --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
 }
 
 @test 'Use default parameters' {
@@ -41,6 +42,7 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_JUNIT_REPORT=""
     export PARAM_LOCATIONS=""
     export PARAM_PUBLIC_IDS=""
+    export PARAM_SELECTIVE_RERUN=""
     export PARAM_SUBDOMAIN=""
     export PARAM_TEST_SEARCH_QUERY=""
     export PARAM_TUNNEL="0"
@@ -63,4 +65,17 @@ DIFF_ARGS="-u --label actual --label expected"
 
     export PARAM_FILES=$'file 1.json\nfile 2.json'
     diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --files "file 1.json" --files "file 2.json")
+}
+
+@test 'Selective rerun is an optional boolean' {
+    export PARAM_SELECTIVE_RERUN=""
+    export DATADOG_CI_COMMAND="echo"
+
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout)
+
+    export PARAM_SELECTIVE_RERUN="false"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --no-selectiveRerun)
+
+    export PARAM_SELECTIVE_RERUN="true"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --selectiveRerun)
 }
