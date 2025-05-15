@@ -15,7 +15,7 @@ parameters:
     default: false
   batch_timeout:
     type: integer
-    description: The duration in milliseconds after which the CI batch fails as timed out. This does not affect the outcome of a test run that already started.
+    description: Specifies the timeout duration in milliseconds for the CI batch.
     default: 1800000
   config_path:
     type: string
@@ -53,6 +53,14 @@ parameters:
     type: string
     description: Public IDs of Synthetic tests to run, separated by new lines or commas. If no value is provided, tests are discovered in Synthetic test configuration files.
     default: ''
+  # Cleanest way to have an optional boolean parameter in CircleCI. In other CI integrations, we use `getDefinedBoolean()`.
+  # The downside is that users cannot use "yes"/"no" and "on"/"off" like other boolean parameters.
+  # https://circleci.com/docs/reusing-config/#enum
+  selective_rerun:
+    type: enum
+    description: Whether to only rerun failed tests for a given commit.
+    default: ''
+    enum: ['', 'false', 'true']
   site:
     type: string
     description: Your Datadog site.
@@ -88,6 +96,7 @@ steps:
         PARAM_JUNIT_REPORT: <<parameters.junit_report>>
         PARAM_LOCATIONS: <<parameters.locations>>
         PARAM_PUBLIC_IDS: <<parameters.public_ids>>
+        PARAM_SELECTIVE_RERUN: <<parameters.selective_rerun>>
         PARAM_SITE: <<parameters.site>>
         PARAM_SUBDOMAIN: <<parameters.subdomain>>
         PARAM_TEST_SEARCH_QUERY: <<parameters.test_search_query>>
