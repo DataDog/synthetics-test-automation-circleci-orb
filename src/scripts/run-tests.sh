@@ -3,7 +3,7 @@ RunTests() {
     PARAM_APP_KEY=$(eval echo "\$$PARAM_APP_KEY")
 
     if [[ -n "${DD_SITE}" ]]; then
-        PARAM_SITE=${DD_SITE}
+        PARAM_DATADOG_SITE=${DD_SITE}
     fi
 
     DATADOG_CI_VERSION="3.5.0"
@@ -77,7 +77,7 @@ RunTests() {
     DATADOG_API_KEY="${PARAM_API_KEY}" \
         DATADOG_APP_KEY="${PARAM_APP_KEY}" \
         DATADOG_SUBDOMAIN="${PARAM_SUBDOMAIN}" \
-        DATADOG_SITE="${PARAM_SITE}" \
+        DATADOG_SITE="${PARAM_DATADOG_SITE}" \
         DATADOG_SYNTHETICS_CI_TRIGGER_APP="circle_ci_orb" \
         $DATADOG_CI_COMMAND synthetics run-tests \
         "${args[@]}"

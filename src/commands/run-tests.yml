@@ -21,6 +21,10 @@ parameters:
     type: string
     description: The path to the global configuration file that configures datadog-ci.
     default: ''
+  datadog_site:
+    type: string
+    description: Your Datadog site.
+    default: 'datadoghq.com'
   fail_on_critical_errors:
     type: boolean
     description: Fail the CI job if a critical error that is typically transient occurs, such as rate limits, authentication failures, or Datadog infrastructure issues.
@@ -61,10 +65,6 @@ parameters:
     description: Whether to only rerun failed tests for a given commit.
     default: ''
     enum: ['', 'false', 'true']
-  site:
-    type: string
-    description: Your Datadog site.
-    default: 'datadoghq.com'
   subdomain:
     type: string
     description: The custom subdomain to access your Datadog organization. If your URL is `myorg.datadoghq.com`, the custom subdomain is `myorg`.
@@ -89,6 +89,7 @@ steps:
         PARAM_APP_KEY: <<parameters.app_key>>
         PARAM_BATCH_TIMEOUT: <<parameters.batch_timeout>>
         PARAM_CONFIG_PATH: <<parameters.config_path>>
+        PARAM_DATADOG_SITE: <<parameters.datadog_site>>
         PARAM_FAIL_ON_CRITICAL_ERRORS: <<parameters.fail_on_critical_errors>>
         PARAM_FAIL_ON_MISSING_TESTS: <<parameters.fail_on_missing_tests>>
         PARAM_FAIL_ON_TIMEOUT: <<parameters.fail_on_timeout>>
@@ -97,7 +98,6 @@ steps:
         PARAM_LOCATIONS: <<parameters.locations>>
         PARAM_PUBLIC_IDS: <<parameters.public_ids>>
         PARAM_SELECTIVE_RERUN: <<parameters.selective_rerun>>
-        PARAM_SITE: <<parameters.site>>
         PARAM_SUBDOMAIN: <<parameters.subdomain>>
         PARAM_TEST_SEARCH_QUERY: <<parameters.test_search_query>>
         PARAM_TUNNEL: <<parameters.tunnel>>
