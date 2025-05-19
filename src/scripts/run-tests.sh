@@ -47,13 +47,13 @@ RunTests() {
     if [[ -n $PARAM_LOCATIONS ]]; then
         # Split by new lines or commas.
         IFS=$'\n,'
-        locations=()
+        temp_locations=()
         for location in ${PARAM_LOCATIONS}; do
-            locations+=("${location}")
+            temp_locations+=("${location}")
         done
         unset IFS
         # Join the array with `;` as a separator.
-        args+=(--override locations="$(IFS=';' && echo "${locations[*]}")")
+        args+=(--override locations="$(IFS=';' && echo "${temp_locations[*]}")")
     fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         IFS=$'\n,'
