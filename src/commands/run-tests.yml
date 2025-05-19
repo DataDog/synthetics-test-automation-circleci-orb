@@ -47,7 +47,7 @@ parameters:
     default: ''
   locations:
     type: string
-    description: Override the list of locations to run the test from.
+    description: Override the list of locations to run the test from, separated by new lines or commas.
     default: ''
   no_output_timeout:
     type: string
@@ -79,7 +79,7 @@ parameters:
     default: false
   variables:
     type: string
-    description: 'Override existing or inject new local and global variables in Synthetic tests. For example: `START_URL=https://example.org,MY_VARIABLE=My title`.'
+    description: 'Override existing or inject new local and global variables in Synthetic tests as key-value pairs, separated by new lines or commas. For example: `START_URL=https://example.org,MY_VARIABLE=My title`.'
     default: ''
 steps:
   - run:

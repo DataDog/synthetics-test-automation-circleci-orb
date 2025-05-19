@@ -26,7 +26,7 @@ DIFF_ARGS="-u --label actual --label expected"
     export PARAM_VARIABLES='START_URL=https://example.org,MY_VARIABLE="My title"'
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --public-id jak-not-now --public-id jak-one-mor --selectiveRerun --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --batchTimeout 123 --config ./some/other/path.json --failOnCriticalErrors --failOnMissingTests --no-failOnTimeout --files test1.json --jUnitReport reports/TEST-1.xml --override locations="aws:eu-west-1" --public-id jak-not-now --public-id jak-one-mor --selectiveRerun --search apm --tunnel --variable START_URL=https://example.org --variable MY_VARIABLE=\"My title\")
 }
 
 @test 'Use default parameters' {
@@ -78,4 +78,14 @@ DIFF_ARGS="-u --label actual --label expected"
 
     export PARAM_SELECTIVE_RERUN="true"
     diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --selectiveRerun)
+}
+
+@test 'Support spaces and commas in locations' {
+    export DATADOG_CI_COMMAND="echo"
+
+    export PARAM_LOCATIONS="aws:eu-west-1,aws:eu-west-2"
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --override locations="aws:eu-west-1;aws:eu-west-2")
+
+    export PARAM_LOCATIONS=$'aws:eu-west-1\naws:eu-west-2'
+    diff $DIFF_ARGS <(RunTests) <(echo synthetics run-tests --no-failOnTimeout --override locations="aws:eu-west-1;aws:eu-west-2")
 }
