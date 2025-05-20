@@ -44,6 +44,17 @@ RunTests() {
     if [[ -n $PARAM_JUNIT_REPORT ]]; then
         args+=(--jUnitReport "${PARAM_JUNIT_REPORT}")
     fi
+    if [[ -n $PARAM_LOCATIONS ]]; then
+        # Split by new lines or commas.
+        IFS=$'\n,'
+        temp_locations=()
+        for location in ${PARAM_LOCATIONS}; do
+            temp_locations+=("${location}")
+        done
+        unset IFS
+        # Join the array with `;` as a separator.
+        args+=(--override locations="$(IFS=';' && echo "${temp_locations[*]}")")
+    fi
     if [[ -n $PARAM_PUBLIC_IDS ]]; then
         IFS=$'\n,'
         for public_id in ${PARAM_PUBLIC_IDS}; do
@@ -68,10 +79,6 @@ RunTests() {
             args+=(--variable "${variable}")
         done
         unset IFS
-    fi
-
-    if [[ -n $PARAM_LOCATIONS ]]; then
-        export DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}"
     fi
 
     DATADOG_API_KEY="${PARAM_API_KEY}" \
