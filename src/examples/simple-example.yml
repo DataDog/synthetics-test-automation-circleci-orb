@@ -3,7 +3,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    synthetics-ci-orb: datadog/synthetics-ci-orb@5.2.0
+    synthetics-ci-orb: datadog/synthetics-ci-orb@5.3.0
   workflows:
     test:
       jobs:
