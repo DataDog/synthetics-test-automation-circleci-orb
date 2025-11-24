@@ -27,7 +27,7 @@ jobs:
         with:
           scope: DataDog/synthetics-test-automation-circleci-orb
           policy: self.bump-datadog-ci.create-pr
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ steps.octo-sts.outputs.token }}
